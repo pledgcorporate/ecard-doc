@@ -30,8 +30,8 @@ module.exports = {
     repo: 'pledgcorporate/ecard-docs',
     editLinks: true,
     editLinkText: 'Help us improve this page!',
-    docsRepo: 'pledgcorporate/ecard-docs',
-    docsDir: 'doc',
+    docsRepo: 'pledgcorporate/ecard-doc',
+    docsDir: 'docs',
     lastUpdated: false,
     nav: [
       {
