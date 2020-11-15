@@ -17,6 +17,7 @@ Avant de refaire l'installation, une désinstallation complète du module est n�
     MerID ... pour chaque mode de paiement.
 
 * Désinstaller le module
+
   - Allez dans le gestionnaire des modules en cliquant sur "Modules"
     dans le menu.
 
@@ -56,6 +57,7 @@ sur "Vider le cache".
   - Recompressez l'archive.
 
 - Ajoutez le module dans Prestashop
+
   - Allez dans gestionnaire des modules via le menu "Modules" et cliquez sur "Charger un module".
 
   - Sélectionnez l'archive "pledg" au format zip ; une notification vous indiquera que "Le module a bien été
