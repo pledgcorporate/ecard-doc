@@ -1,4 +1,4 @@
-# Prestashop 1.6
+# Intégration Prestashop v16 - Pledg
 
 Procédure à suivre pour l'intégration du module Prestashop v16
 
@@ -91,6 +91,16 @@ Une fois l'installation terminée, un nouvel élément "Pledg - Paiements" doit 
 
 ⚠️ Les moyens de paiement Pledg s'afficheront sur votre page de paiement dans **l'ordre dans lequel vous les avez ajoutés**.
 
-Si vous avez des questions clea@pledg.co 👋
+## Etape 5 - Test
+
+Réalisez un test complet dans votre environnement :
+
+- Remplissez votre panier avec des articles
+- Procédez au paiement
+- Vérifiez dans l'interface "Commandes" de l'administration que votre commande de test soit bien présente dans la liste.
+
+![Capture_TestCommande_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/5a348b10-bce0-4e62-ac69-004dba37793f/Capture_TestCommande_Red.png)
+
+Si vous avez des questions francois.delaitre@pledg.co 👋
 
 2020-11-09

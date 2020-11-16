@@ -1,4 +1,4 @@
-# Prestashop 1.7
+# Intégration Prestashop v17 - Pledg
 
 Procédure à suivre pour l'intégration du module Prestashop v17 (version avril 2020)
 
@@ -17,7 +17,6 @@ Avant de refaire l'installation, une désinstallation complète du module est n�
     MerID ... pour chaque mode de paiement.
 
 * Désinstaller le module
-
   - Allez dans le gestionnaire des modules en cliquant sur "Modules"
     dans le menu.
 
@@ -57,7 +56,6 @@ sur "Vider le cache".
   - Recompressez l'archive.
 
 - Ajoutez le module dans Prestashop
-
   - Allez dans gestionnaire des modules via le menu "Modules" et cliquez sur "Charger un module".
 
   - Sélectionnez l'archive "pledg" au format zip ; une notification vous indiquera que "Le module a bien été
@@ -91,6 +89,16 @@ Allez dans détails > Pledg - Paiements.
 
 ⚠️ Les moyens de paiement Pledg s'afficheront sur votre page de paiement dans **l'ordre dans lequel vous les avez ajoutés**.
 
-Si vous avez des questions clea@pledg.co 👋
+## Etape 5 - Test
 
-2020-04-06
+Réalisez un test complet dans votre environnement :
+
+- Remplissez votre panier avec des articles
+- Procédez au paiement
+- Vérifiez dans l'interface "Commandes" de l'administration que votre commande de test soit bien présente dans la liste.
+
+![Capture_TestPaiement_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/1be289ee-6a00-4d4f-807d-a68ae5e2a4ef/Capture_TestPaiement_Red.PNG)
+
+Si vous avez des questions francois.delaitre@pledg.co 👋
+
+2020-11-13
