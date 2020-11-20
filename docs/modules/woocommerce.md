@@ -1,11 +1,16 @@
-# Intégration Woocommerce - Pledg
+# Installation Woocommerce - Pledg
 
-Procédure à suivre pour l'intégration du module Woocommerce
+## Etape 1 - Création du compte
 
-## **Étape 1 **
+### Option copilote
 
-1. Nous configurons votre compte
-1. Nous vous envoyons votre/vos <mark>Merchant ID</mark>
+1. Nous configurons votre compte pour vous(vous pouvez prendre rendez-vous [ici](https://pledg.co/prenez-rendez-vous/))
+2. Nous vous envoyons votre identifiant de compte (`merchant_uid`)
+
+### Option self-service
+
+1. Vous [créez votre compte](https://staging.dashboard.ecard.pledg.co/#/)
+2. Vous relevez votre identifiant de compte (`merchant_uid`) sur votre [dashboard](https://staging.dashboard.ecard.pledg.co/#/)
 
 ## Etape 2 - Désinstallation (optionnelle)
 
