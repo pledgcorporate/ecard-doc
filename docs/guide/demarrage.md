@@ -1,4 +1,4 @@
-# Dashboard Pledg
+# Démarrage
 
 Le dashboard de Pledg vous permet de configurer vos moyens de paiement et suivre les paiements réalisés sur vos différents comptes.
 

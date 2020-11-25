@@ -52,7 +52,7 @@ module.exports = {
         {
           title: "Guide",
           collapsable: false,
-          children: ["", "quickstart", "dashboard"],
+          children: ["", "demarrage"],
         },
       ],
       "/modules/": [

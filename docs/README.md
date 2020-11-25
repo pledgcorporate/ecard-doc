@@ -11,7 +11,7 @@ features:
     details: Documentation avec exemples de l'intégration via notre plugin Javascript
   - title: Modules e-commerce
     icon: package
-    link: /guide/using-vue/
+    link: /modules/
     details: Guides pas-à-pas pour l'installation sur les plateformes e-commerce
 footer: © Pledg 2020
 ---

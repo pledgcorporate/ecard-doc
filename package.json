@@ -1,5 +1,5 @@
 {
-  "name": "ecard-docs",
+  "name": "ecard-doc",
   "version": "0.0.1",
   "description": "Documentation for Pledg installment payments",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "name": "Dev team",
     "email": "contact@pledg.co"
   },
-  "repository": "https://github.com/pledgcorporate/ecard-docs/",
+  "repository": "https://github.com/pledgcorporate/ecard-doc/",
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs"
