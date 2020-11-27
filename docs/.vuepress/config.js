@@ -52,7 +52,7 @@ module.exports = {
         {
           title: "Guide",
           collapsable: false,
-          children: ["", "demarrage"],
+          children: ["", "quickstart", "payment-link"],
         },
       ],
       "/modules/": [
