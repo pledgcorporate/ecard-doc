@@ -31,17 +31,22 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
+    displayAllHeaders: true,
     repo: "pledgcorporate/ecard-doc",
     editLinks: true,
     editLinkText: "Help us improve this page!",
     docsRepo: "pledgcorporate/ecard-doc",
     docsDir: "docs",
-    lastUpdated: false,
+    lastUpdated: true,
     nav: [
       {
         text: "Guide",
         link: "/guide/",
       },
+      {
+        text: "Plugin",
+        link: "/plugin/",
+      },      
       {
         text: "Modules",
         link: "/modules/",
@@ -55,6 +60,16 @@ module.exports = {
           children: ["", "quickstart", "payment-link"],
         },
       ],
+      "/plugin/": [
+        {
+          title: "Plugin",
+          collapsable: false,
+          children: [
+            "",
+            "integration",
+          ],
+        },
+      ],      
       "/modules/": [
         {
           title: "Modules",
@@ -67,7 +82,7 @@ module.exports = {
             "woocommerce",
           ],
         },
-      ],
+      ],    
     },
   },
 
