@@ -52,38 +52,36 @@ module.exports = {
         link: "/modules/",
       },
     ],
-    sidebar: {
-      "/guide/": [
-        {
-          title: "Guide",
-          collapsable: false,
-          children: ["", "quickstart", "payment-link"],
-        },
-      ],
-      "/plugin/": [
-        {
-          title: "Plugin",
-          collapsable: false,
-          children: [
-            "",
-            "integration",
-          ],
-        },
-      ],      
-      "/modules/": [
-        {
-          title: "Modules",
-          collapsable: false,
-          children: [
-            "",
-            "magento-2",
-            "prestashop-16",
-            "prestashop-17",
-            "woocommerce",
-          ],
-        },
-      ],    
-    },
+    sidebar: [
+      "/",
+      {
+        title: "Guide",
+        collapsable: true,
+        children: [
+          "/guide/",
+          "/guide/quickstart",
+          "/guide/payment-link"],
+      },
+      {
+        title: "Plugin",
+        collapsable: true,
+        children: [
+          "/plugin/",
+          "/plugin/integration",
+        ],
+      },
+      {
+        title: "Modules",
+        collapsable: true,
+        children: [
+          "/modules/",
+          "/modules/magento-2",
+          "/modules/prestashop-16",
+          "/modules/prestashop-17",
+          "/modules/woocommerce",
+        ],
+      },
+    ],    
   },
 
   /**
