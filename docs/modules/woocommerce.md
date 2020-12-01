@@ -30,7 +30,7 @@ Avant de refaire l'installation, une désinstallation complète du module est n�
 
 ## **Etape 3 - Installation**
 
-- Téléchargez le module Prestashop de Pledg
+- Téléchargez le module WooCommerce de Pledg
 
   https://github.com/pledgcorporate/ecard-woocommerce/archive/master.zip
 
