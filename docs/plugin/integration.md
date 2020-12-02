@@ -15,9 +15,9 @@ In parallel, the merchant indicates to Pledg the values to be assigned to the co
 | Name          | All| All | Yes | Name of the merchant | To fill the emails/SMS |
 | Site URL      | All | All | Yes | URL of web site of the merchant |  To fill the emails |
 | Picture URL   | All | All | Yes | URL of the logo of the merchant | To fill the emails |
-| CSS URL       | All| All | No | URL of the iframe CSS | To customize the layout of the payment funnel |
-| GTU URL       | All| All | No | URL of the general terms of use (GTU) of the merchant | To customize the layout of the payment funnel |
-| GTU message   | All| All | No | Label of the link to the GTU of the merchant | To customize the layout of the payment funnel |
+| CSS URL       | All | All | No | URL of the iframe CSS | To customize the layout of the payment funnel |
+| GTU URL       | Split | All | No | URL of the general terms of use (GTU) of the merchant | To customize the layout of the payment funnel |
+| GTU message   | Split | All | No | Label of the link to the GTU of the merchant | To customize the layout of the payment funnel |
 | Use 3DS | All| All | No | Either *always*, *never* (unless it is required by the card) or *auto* (i.e. only depending on the purchase amount) (*auto* by default) | |
 | PSP connnector | All| eCard | No | Connection parameters to the merchant PSP | To use the plugin in back mode |
 | Timezone      | All| All | No | Timezone (*Europe/Paris* by default) | To localize the date and time in the emails/SMS |
