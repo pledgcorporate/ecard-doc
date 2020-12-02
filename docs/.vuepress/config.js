@@ -95,7 +95,7 @@ module.exports = {
       ga: "", // UA-00000000-0
     },
     {
-      sitemap: {
+      "sitemap": {
         hostname: "https://docs.pledg.co",
       },
     },

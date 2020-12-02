@@ -651,16 +651,16 @@ When the merchant wants to refund a customer, there are 2 situations:
 
 For the payment by transfer, the merchant can issue a refund by using the endpoint `https://back.ecard.pledg.co/api/purchases/{purchase_uid}/credit_by_transfer POST`, with the desired `amount_cents` in the body
 
-# Specificities of the different modes
+## Specificities of the different modes
 
-## Front mode
+### Front mode
 
-### Use case
+#### Use case
 
 This mode should be used when the card payment form is a plain form (i.e. not an iframe) hosted on the merchant's payment page.
 In this case, the eCard information can be directly passed to the card payment form on the merchant frontend.
 
-### Split payment workflow
+#### Split payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills his email and the emails or phone numbers of his co-buyers
@@ -672,7 +672,7 @@ In this case, the eCard information can be directly passed to the card payment f
 8. The user lands on the merchant payment confirmation page
 9. The Pledg backend sends an email to the user and an email or an SMS to his co-buyers
 
-### Installment payment workflow
+#### Installment payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills out his card details
@@ -682,7 +682,7 @@ In this case, the eCard information can be directly passed to the card payment f
 6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
 7. The user lands on the merchant payment confirmation page
 
-### Deferred payment workflow
+#### Deferred payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills out his card details
@@ -692,7 +692,7 @@ In this case, the eCard information can be directly passed to the card payment f
 6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
 7. The user lands on the merchant payment confirmation page
 
-### Down payment workflow
+#### Down payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills out his card details
@@ -702,7 +702,7 @@ In this case, the eCard information can be directly passed to the card payment f
 6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
 7. The user lands on the merchant payment confirmation page
 
-### Redirection payment workflow in an iframe
+#### Redirection payment workflow in an iframe
 
 1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel inside an iframe
 2. The user completes the payment in the external PSP web site
@@ -712,7 +712,7 @@ In this case, the eCard information can be directly passed to the card payment f
 6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
 7. The user lands on the merchant payment confirmation page
 
-### Redirection payment workflow in a new page
+#### Redirection payment workflow in a new page
 
 1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel in a new page
 2. The user completes the payment in the external PSP web site
@@ -722,7 +722,7 @@ In this case, the eCard information can be directly passed to the card payment f
 6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
 7. The user lands on the merchant payment confirmation page
 
-### Integration
+#### Integration
 
 This mode is particularly simple to deploy as there is strictly no
 configuration to be completed on the merchant backend or merchant PSP.
@@ -736,7 +736,7 @@ For the specific case of a payment page using the Stripe form:
   * Enter a card and validate
   * Some hidden inputs should be added at the bottom of the form, indicating if a token or a source is used, with which labels
 
-### Result
+#### Result
 
 The structure of the result passed to onSuccess is:
 
@@ -751,7 +751,7 @@ The structure of the result passed to onSuccess is:
 }
 ```
 
-### Notification
+#### Notification
 
 The merchant can specify at the purchase creation a webhook to be called when the virtual card is generated.
 
@@ -782,7 +782,7 @@ POST /merchant_payment_notification_url
  "amount_cents":7900}
 ```
 
-### Demo
+#### Demo
 
 A demo in a classic payment page is available [there](https://staging.merchant.ecard.pledg.co/standard-demo.html).
 
@@ -790,16 +790,16 @@ Other demos, in a payment page using the Stripe payment form, are available: one
 [token](https://staging.merchant.ecard.pledg.co/front-stripe-token-demo.html) and another
 one using a [source](https://staging.merchant.ecard.pledg.co/front-stripe-source-demo.html).
 
-## Back mode
+### Back mode
 
-### Use case
+#### Use case
 
 This mode should be used when:
 
 1. The payment page is hosted by the merchant's Payment Service Provider or
 2. The payment form is integrated on an iframe on the merchant's payment page. This is the case when the eCard information cannot be directly passed to the card payment form on the merchant frontend.
 
-### Split payment workflow
+#### Split payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills his email and the emails or phone numbers of his co-buyers
@@ -812,7 +812,7 @@ This mode should be used when:
 9. The user lands on the merchant payment confirmation page
 10. The Pledg backend sends an email to the user and an email or an SMS to his co-buyers
 
-### Installment payment workflow
+#### Installment payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills out his card details
@@ -823,7 +823,7 @@ This mode should be used when:
 7. The merchant frontend submits the result of the payment to the merchant backend
 8. The user lands on the merchant payment confirmation page
 
-### Deferred payment workflow
+#### Deferred payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills out his card details
@@ -834,7 +834,7 @@ This mode should be used when:
 7. The merchant frontend submits the result of the payment to the merchant backend
 8. The user lands on the merchant payment confirmation page
 
-### Down payment workflow
+#### Down payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills out his card details
@@ -845,7 +845,7 @@ This mode should be used when:
 7. The merchant frontend submits the result of the payment to the merchant backend
 8. The user lands on the merchant payment confirmation page
 
-### Redirection payment workflow in an iframe
+#### Redirection payment workflow in an iframe
 
 1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel inside an iframe
 2. The user completes the payment in the external PSP web site
@@ -856,7 +856,7 @@ This mode should be used when:
 7. The merchant frontend submits the result of the payment to the merchant backend
 8. The user lands on the merchant payment confirmation page
 
-### Redirection payment workflow in a new page
+#### Redirection payment workflow in a new page
 
 1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel in a new page
 2. The user completes the payment in the external PSP web site
@@ -865,9 +865,9 @@ This mode should be used when:
 5. The Pledg backend submits the eCard to the merchant PSP for payment, via the PSP API
 6. The customer is redirected to the merchant web site (which is normally notified by its PSP that the payment was completed), with the result of the payment appended to the URL
 
-### Integration
+#### Integration
 
-#### Adyen
+##### Adyen
 
 When the PSP of the merchant is Adyen, the merchant must provide to Pledg
 the following parameters:
@@ -878,7 +878,7 @@ the following parameters:
 | Password | |
 | Your merchant account (upper left hand corner of your Adyen dashboard) | |
 
-#### SystemPay / PayZen
+##### SystemPay / PayZen
 
 When the PSP of the merchant is SystemPay or Payzen, the merchant must provide to Pledg
 the following parameters:
@@ -897,7 +897,7 @@ the following parameters:
 | username  | |
 | password | |
 
-#### Ogone
+##### Ogone
 
 When the PSP of the merchant is Ogone , the merchant must provide to Pledg
 the following parameters:
@@ -911,10 +911,11 @@ the following parameters:
 
 Login is the global account.
 To more infos about the Api User please see:
+
 - https://payment-services.ingenico.com/int/en/ogone/support/guides/user%20guides/shopping-carts/what-is-an-api-user
 - https://payment-services.ingenico.com/int/en/ogone/support/guides/integration%20guides/directlink/general-procedures-and-security-settings#apiuser
 
-### Standard result
+#### Standard result
 
 The structure of the result (which is independent of the merchant
 PSP) passed to onSuccess is:
@@ -935,7 +936,7 @@ The id is the true PSP id (for example Stripe), not the Pledg id. It can be retr
 
 The transaction statuses are documented [there](https://docs.processout.com/payments/handle-status-changes-webhooks/#transaction-statuses).
 
-### Payzen result
+#### Payzen result
 
 The structure of the result passed to onSuccess is:
 
@@ -970,11 +971,11 @@ For SOAP webservice the result can be provided as a JWT, encoded with a secret s
 For REST webservice, if the purchase was configured with a `payment_notification_url` Payzen will send an IPN to this url.
 For more information on Payzen's IPN, see [there](https://payzen.io/en-EN/rest/V4.0/api/kb/ipn_usage.html)
 
-### Standard notification
+#### Standard notification
 
 The merchant can specify at the purchase creation a webhook to be called at the end of the PSP payment (i.e. when the PSP returns to Pledg the payment result).
 
-#### Body
+##### Body
 
 The webhook URL is an optional parameter of the purchase: `paymentNotificationUrl`.
 
@@ -1002,7 +1003,7 @@ POST /merchant_payment_notification_url
 
 The transaction statuses are documented [there](https://docs.processout.com/payments/handle-status-changes-webhooks/#transaction-statuses).
 
-#### Signature of the result
+##### Signature of the result
 
 This webhook has a `signature` field to check that it was sent from Pledg
 
@@ -1048,7 +1049,7 @@ B1C777835C01CA96AC4C3097FD46A7CA49B92BE157EDE0CB3552880D12A15359
 
 4. Check the value of the signature field received.
 
-### Payzen notification
+#### Payzen notification
 
 Let us consider a merchant using Payzen and where the customer completes the payment with the Payzen front library.
 
@@ -1062,23 +1063,23 @@ The merchant must specify at the purchase creation the webhook URL to be called 
 
 This webhook URL is an optional parameter of the purchase: `paymentNotificationUrl`.
 
-### Ogone notification
+#### Ogone notification
 
 The principle is exactly the same as for Payzen, for the same reasons.
 
-### Demo
+#### Demo
 
 A demo is available [there](https://staging.merchant.ecard.pledg.co/back-stripe-demo.html).
 
-## Transfer mode
+### Transfer mode
 
-### Use case
+#### Use case
 
 Instead of paying the merchant using an ecard, payment will be done by sending money to the merchant using bank transfers.
 Once a purchase is validated from Pledg side, the full purchase amount will be transfered to the merchant at the end of the day (money should be received in the next 3 business days).
 If several purchases are made for a given merchant, they will be aggregated all together in one transfer.
 
-### Split payment workflow
+#### Split payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills his email and the emails or phone numbers of his co-buyers
@@ -1089,7 +1090,7 @@ If several purchases are made for a given merchant, they will be aggregated all 
 7. The user lands on the merchant payment confirmation page
 8. The Pledg backend sends an email to the user and an email or an SMS to his co-buyers
 
-### Installment payment workflow
+#### Installment payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills out his card details
@@ -1098,7 +1099,7 @@ If several purchases are made for a given merchant, they will be aggregated all 
 5. The plugin returns the result of the payment
 6. The user lands on the merchant payment confirmation page
 
-### Deferred payment workflow
+#### Deferred payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills out his card details
@@ -1107,7 +1108,7 @@ If several purchases are made for a given merchant, they will be aggregated all 
 5. The plugin returns http 200
 6. The user lands on the merchant payment confirmation page
 
-### Down payment workflow
+#### Down payment workflow
 
 1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
 2. The user fills out his card details
@@ -1116,7 +1117,7 @@ If several purchases are made for a given merchant, they will be aggregated all 
 5. The plugin returns the result of the payment
 6. The user lands on the merchant payment confirmation page
 
-### Redirection payment workflow in an iframe
+#### Redirection payment workflow in an iframe
 
 1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel inside an iframe
 2. The user completes the payment in the external PSP web site
@@ -1125,7 +1126,7 @@ If several purchases are made for a given merchant, they will be aggregated all 
 5. The plugin returns the result of the payment
 6. The user lands on the merchant payment confirmation page
 
-### Redirection payment workflow in a new page
+#### Redirection payment workflow in a new page
 
 1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel in a new page
 2. The user completes the payment in the external PSP web site
@@ -1134,7 +1135,7 @@ If several purchases are made for a given merchant, they will be aggregated all 
 5. The customer is redirected to the merchant web site (which is normally notified by its PSP that the payment was completed)
 6. The user lands on the merchant payment confirmation page
 
-### Integration
+#### Integration
 
 This mode is particularly simple to deploy as there is strictly no
 configuration to be completed on the merchant backend or merchant PSP.
@@ -1148,7 +1149,7 @@ For the specific case of a payment page using the Stripe form:
   * Enter a card and validate
   * Some hidden inputs should be added at the bottom of the form, indicating if a token or a source is used, with which labels
 
-### Result
+#### Result
 
 The structure of the result passed to onSuccess is:
 
@@ -1159,7 +1160,7 @@ The structure of the result passed to onSuccess is:
 }
 ```
 
-### Notification
+#### Notification
 
 To notify the merchant that the purchase was completed successfully, a notification will be sent using `paymentNotificationUrl` as a `POST`.
 The body of the notification will be as such:
@@ -1181,6 +1182,6 @@ If there is a `secret` in your [Merchant parameters](#merchant-parameters), it w
 }
 ```
 
-### Demo
+#### Demo
 
 A demo is available [there](https://staging.merchant.ecard.pledg.co/transfer-demo.html).
