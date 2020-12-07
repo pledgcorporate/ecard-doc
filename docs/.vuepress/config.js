@@ -2,16 +2,6 @@ const { description } = require("../../package");
 
 module.exports = {
   /**
-   * Ref：https://v1.vuepress.vuejs.org/config/#title
-   */
-  title:
-    "Documentation d'intégration de la solution de paiement fractionné Pledg",
-  /**
-   * Ref：https://v1.vuepress.vuejs.org/config/#description
-   */
-  description: description,
-
-  /**
    * Extra tags to be injected to the page HTML `<head>`
    *
    * ref：https://v1.vuepress.vuejs.org/config/#head
@@ -24,7 +14,20 @@ module.exports = {
       { name: "apple-mobile-web-app-status-bar-style", content: "black" },
     ],
   ],
-
+  locales: {
+    // The key is the path for the locale to be nested under.
+    // As a special case, the default locale can use '/' as its path.
+    '/': {
+      lang: 'fr-FR', // this will be set as the lang attribute on <html>
+      title: "Documentation technique de la solution de paiement fractionné Pledg",
+      description: 'Intégrez simplement le paiement fractionné et différé avec notre plugin et nos modules CMS'
+    },
+    '/en/': {
+      lang: 'en-GB',
+      title: 'Technical documentation for Pledg buy now pay later solution',
+      description: 'Easy integration of buy now pay later with our plugin and CMS modules'
+    }
+  },
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
    *
@@ -38,50 +41,89 @@ module.exports = {
     docsRepo: "pledgcorporate/ecard-doc",
     docsDir: "docs",
     lastUpdated: true,
-    nav: [
-      {
-        text: "Guide",
-        link: "/guide/",
-      },
-      {
-        text: "Plugin",
-        link: "/plugin/",
-      },      
-      {
-        text: "Modules",
-        link: "/modules/",
-      },
-    ],
-    sidebar: [
-      "/",
-      {
-        title: "Guide",
-        collapsable: true,
-        children: [
-          "/guide/",
-          "/guide/quickstart",
-          "/guide/payment-link"],
-      },
-      {
-        title: "Plugin",
-        collapsable: true,
-        children: [
-          "/plugin/",
-          "/plugin/integration",
+    locales: {
+      // The key is the path for the locale to be nested under.
+      // As a special case, the default locale can use '/' as its path.
+      '/': {
+        // text for the language dropdown
+        selectText: 'Langues',
+        // label for this locale in the language dropdown
+        label: 'Français',
+        // Aria Label for locale in the dropdown
+        ariaLabel: 'Langues',
+        // text for the edit-on-github link
+        editLinkText: 'Editez sur GitHub',
+        nav: [
+          {
+            text: "Guide",
+            link: "/guide/",
+          },
+          {
+            text: "Plugin",
+            link: "/plugin/",
+          },      
+          {
+            text: "Modules",
+            link: "/modules/",
+          },
         ],
+        sidebar: [
+          "/",
+          {
+            title: "Guide",
+            collapsable: true,
+            children: [
+              "/guide/",
+              "/guide/quickstart",
+              "/guide/payment-link"],
+          },
+          {
+            title: "Plugin",
+            collapsable: true,
+            children: [
+              "/plugin/",
+              "/plugin/integration",
+            ],
+          },
+          {
+            title: "Modules",
+            collapsable: true,
+            children: [
+              "/modules/",
+              "/modules/magento-2",
+              "/modules/prestashop-16",
+              "/modules/prestashop-17",
+              "/modules/woocommerce",
+            ],
+          },
+        ], 
       },
-      {
-        title: "Modules",
-        collapsable: true,
-        children: [
-          "/modules/",
-          "/modules/magento-2",
-          "/modules/prestashop-16",
-          "/modules/prestashop-17",
-          "/modules/woocommerce",
+      '/en/': {
+        // text for the language dropdown
+        selectText: 'Languages',
+        // label for this locale in the language dropdown
+        label: 'English',
+        // Aria Label for locale in the dropdown
+        ariaLabel: 'Languages',
+        // text for the edit-on-github link
+        editLinkText: 'Edit this page on GitHub',
+        nav: [
+          {
+            text: "Guide",
+            link: "../guide/",
+          },
+          {
+            text: "Plugin",
+            link: "../plugin/",
+          },      
+          {
+            text: "Modules",
+            link: "../modules/",
+          },
         ],
-      },
-    ],    
+        sidebar: 'auto',      
+      }
+    },       
   },
 
   /**
