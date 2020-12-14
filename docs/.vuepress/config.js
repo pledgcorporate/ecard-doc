@@ -19,12 +19,12 @@ module.exports = {
     // As a special case, the default locale can use '/' as its path.
     '/': {
       lang: 'fr-FR', // this will be set as the lang attribute on <html>
-      title: "Documentation technique de la solution de paiement fractionné Pledg",
-      description: 'Intégrez simplement le paiement fractionné et différé avec notre plugin et nos modules CMS'
+      title: "Intégration du paiement en plusieurs fois Pledg",
+      description: 'Intégration simple avec notre plugin et nos modules CMS'
     },
     '/en/': {
       lang: 'en-GB',
-      title: 'Technical documentation for Pledg buy now pay later solution',
+      title: 'Integration of Pledg buy now pay later solution',
       description: 'Easy integration of buy now pay later with our plugin and CMS modules'
     }
   },
@@ -96,7 +96,12 @@ module.exports = {
               "/modules/woocommerce",
             ],
           },
-        ], 
+        ],
+        algolia: {
+          apiKey: '3bd06682cc4110749630ba525d6de897',
+          indexName: 'pledg',
+          algoliaOptions: { 'facetFilters': ["lang:fr-FR"] }
+        },               
       },
       '/en/': {
         // text for the language dropdown
@@ -121,9 +126,14 @@ module.exports = {
             link: "../modules/",
           },
         ],
-        sidebar: 'auto',      
+        sidebar: 'auto',
+        algolia: {
+          apiKey: '3bd06682cc4110749630ba525d6de897',
+          indexName: 'pledg',
+          algoliaOptions: { 'facetFilters': ["lang:en-GB"] }
+        }
       }
-    },       
+    },
   },
 
   /**
