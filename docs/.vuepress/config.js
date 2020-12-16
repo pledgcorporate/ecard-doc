@@ -119,7 +119,7 @@ module.exports = {
           },
           {
             text: "Plugin",
-            link: "../plugin/",
+            link: "../../plugin/",
           },      
           {
             text: "Modules",
