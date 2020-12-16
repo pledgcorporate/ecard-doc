@@ -637,6 +637,16 @@ An exemple of direct call of Pledg front using signature can be found here [ther
 
 It must be underlined that this integration provides a worse user experience, compared to the integration with the plugin.
 
+## 3DS
+
+The virtual cards do not support the 3DS.
+
+Therefore, if, in some situations, the merchant forces the 3DS verification, it will always fail.
+
+To avoid this, the merchant should deactivate the 3DS verification for the virtual cards provided by Pledg, which can be identified with their BIN:
+- 522719 (for Edenred)
+- 513218 (for Arkea)
+
 ## Refunds
 
 ### Virtual Cards
