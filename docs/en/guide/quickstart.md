@@ -8,7 +8,7 @@ If you do not have an account, you can create one at [test dashboard (staging)](
 
 When integration is complete, you can request activation of your account at support@pledg.co, and we will give you access to your [production dashboard](https://dashboard.ecard.pledg.co/#/).
 
-[Capture.PNG](https://storage.googleapis.com/slite-api-files-production/files/16cb4189-7bb4-43eb-986b-9b2ae1b74712/Capture.PNG)
+![Capture.PNG](https://storage.googleapis.com/slite-api-files-production/files/16cb4189-7bb4-43eb-986b-9b2ae1b74712/Capture.PNG)
 
 To log in :
 
@@ -135,25 +135,86 @@ To obtain the details of a payment, click on the eye to the right of the payment
 
 Click on the eye of the payment you want to view.
 
-![Capture_PurchaseDetailMain_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/d1f6be47-edc6-459b-9bfd-71bf02c5b2eb/Capture_PurchaseDetailMain_Red.png)
+![Capture_PurchaseDetailMain_Red.png](Capture_PurchaseDetailMain_Red.png)
 
-The main characteristics of the payment are followed by the following blocks:
+The main features of the payment are followed by the sections :
 
-* The due dates
+* **Detail** :																							 
+  - Date: the date on which the transaction was made
+  - Reference: the reference transmitted to Pledg from your merchant site.
+  - Transfer ("transfer" mode only): the reference of the transfer made to the merchant to pay for the purchase.
+  - Virtual card (only for `back` and `front` modes): the status of the virtual card with our bank. The meaning of the status is detailed below :
   
-- In the case of a split payment, you will find the list of due dates with the associated dates, amounts and status:
-![Capture_PurchaseDetailPayment.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/759e6d22-3c2d-4019-85d9-aa274c8020ad/Capture_PurchaseDetailPayment.PNG)
+| Status | Meaning |
+| ----------- | ----------- |
+| `AUTHORIZED ON TIME` | the bank received a request for authorization from the merchant within 3 minutes of the card generation | |
+| `NOT_AUTHORIZED_ON_TIME` | the bank did not receive any authorisation request from the merchant even after 3 minutes |
+| `AUTHORIZED` | the bank received a request for authorization from the merchant |
+| `DEBITED` | the bank has received a debit request from the merchant |
+| `DEBITED_LOWER_AMOUNT` | the bank has received a request from the merchant to debit an amount less than the authorised amount |
+| `DEBITED_GREATER_AMOUNT` | the bank has received a debit request from the merchant for an amount greater than the authorised amount |
+| `NOT DEBITED` | the bank has received a debit request from the merchant for an amount greater than the authorised amount |
+| `CREDITED` | the bank received a credit application from the merchant |
 
-- In the case of a deferred payment, you will find the due date with its date, amount and associated status:
+* **Maturity dates**
+  
+  - For a split payment, you will find the list of due dates, amounts and associated statuses:
+![Capture_PurchaseDetailEchedule.PNG](Capture_PurchaseDetailEcheance.PNG)
+  - For a deferred payment, you will find the due date with its date, amount and associated status:
+![Capture_PurchaseDetail_Term_2.PNG](Capture_PurchaseDetailEcheance_2.PNG)
 
-![Capture_PurchaseDetailTerm_2.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/a29110c5-e169-454b-9aee-ee09227e0a2a/Capture_PurchaseDetailTerm_2.PNG)
+* **Refunds / Refunds**
 
-* Refunds / Refunds
+Partial or full refunds can be made on payment. You have the option of monitoring the status of refunds or making a refund request for accounts set up in transfer mode.
 
-![Capture_PurchaseDetailRefund.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/b2cd060a-b496-4c7a-bcae-18d733fd3678/Capture_PurchaseDetailRefund.PNG)
+![Capture_PurchaseDetailRefund.PNG](Capture_PurchaseDetailRefund.PNG)
 
-## Consultation of the last transfers
+If repayments have been made, the list of repayment transactions is displayed.
 
-To be completed
+![Capture_Refund_List.PNG](Capture_Refund_List.PNG)
+
+To refund a customer, the operation is different between the modes using a virtual card (front and back) and the "transfer" mode:
+
+* Front and back mode (with virtual card): connect to your PSP (Payment Service Provider) and re-credit the virtual card; the customer's bank card will be re-credited afterwards.
+* Mode `transfer`: the claim is made from the dashbord Pledg :
+
+    - Click on the button "Request a refund".
+    - Fill in the amount you want to reimburse
+    - Click on "Request a refund"; a notification will tell you that the refund has been taken into account.
+
+![Capture_Refund_Demand.PNG](Capture_Refund_Demande.PNG)
+
+**Notes concerning the `transfer` mode
+::: tip
+To refund the **full** amount of a customer's order, you must fill in the total amount of the customer's order; If you fill in the amount corresponding to the due dates drawn, this will correspond to a partial refund and the other due dates will be debited.
+To refund **partially** a customer's order, enter the amount you want to refund. This partial request will not necessarily produce a credit on the customer's credit card. The amount you want to refund will reduce or cancel the customer's most distant debit dates in priority.
+:::
+
+::: tip
+Refunds are usually effective at **D+1** and will appear at that time in the payment refund list in the dashboard.
+:::
+
+## View latest transfers
+
+For accounts set up in `transfer' mode, i.e. a daily transfer is sent to the merchant for an amount corresponding to all the orders of the day, the list of transfers made can be consulted.
+
+This section allows you to reconcile the payment of your orders with the transfers you receive on your bank account.
+
+![Capture_Last_Red.png](Capture_DerniersVirements_Red.png)
+
+Information:
+
+* Amount: the amount of the transfer
+* Status: `sent` when the transfer has been successfully issued
+* Reference: the reference of the transfer transmitted
+* Date: the date of the transfer
+
+Click on the "View All" button to see a list of all transfers. You can then view the details of a transfer with a list of the orders concerned.
+
+![Capture_Last_Transfers_Details_Red.png](Capture_DerniersVirements_Details_Red.png)
+
+In the "Payments" section, you can consult the list of corresponding orders and the reference you have sent to Pledg.
+
+When the amount is negative, this corresponds to a refund. When you make a refund request, we take the refund amount from your bank account and credit the customer's credit card.
 
 If you have any questions francois.delaitre@pledg.co 👋

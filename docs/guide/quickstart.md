@@ -8,13 +8,13 @@ Si vous n'avez pas de compte, vous pouvez en créer un à l'adresse suivante [da
 
 Lorsque l'intégration est terminée, vous pouvez demander l'activation de votre compte à l'adresse support@pledg.co, et nous vous donnons accès à votre [dashboard de production](https://dashboard.ecard.pledg.co/#/).
 
-![Capture.PNG](https://storage.googleapis.com/slite-api-files-production/files/16cb4189-7bb4-43eb-986b-9b2ae1b74712/Capture.PNG)
+![Capture_Login.png](Capture_Login.png)
 
 Pour vous connecter :
 
 * Cliquez sur "Log in"
 * Réinitialisez le mot de passe en renseignant votre email, après avoir cliqué sur :
-![Capture.PNG](https://storage.googleapis.com/slite-api-files-production/files/70ad746d-9434-48a0-8cc0-87e733341cd9/Capture.PNG)
+![Capture_ForgotPassword.png](Capture_ForgotPassword.png)
 * Cliquez sur le lien à usage unique envoyé par mail et spécifiez un nouveau mot de passe
 * Connectez-vous à nouveau avec le mot de passe choisi
 
@@ -22,7 +22,7 @@ Pour vous connecter :
 
 Après vous êtres identifiés, vous arrivez sur l'interface principale du dashboard Pledg.
 
-![Capture_Présentation_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/98b78af6-fa5c-47c6-a807-8395c87cf3e9/Capture_Pr%C3%A9sentation_Red.png)
+![Capture_Présentation_Red.png](Capture_Presentation_Red.png)
 
 Vous y trouverez :
 
@@ -35,7 +35,7 @@ Vous y trouverez :
 
 Pour créer un nouveau moyen de paiement, cliquez sur le bouton "Créer un compte" en bas de la liste de moyens de paiement.
 
-![Capture_NouveauCompte.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/1641e1d2-f301-484c-b2b4-91b9714755fd/Capture_NouveauCompte.PNG)
+![Capture_NouveauCompte.png](Capture_NouveauCompte.png)
 
 Remplissez l'ensemble des champs puis cliquez sur le bouton "Créer" :
 
@@ -61,7 +61,7 @@ Une fois créé, le nouveau compte / moyen de paiement Pledg apparaît dans la l
 
 Dans les comptes, cliquez sur le compte / moyen de paiement Pledg que vous voulez consulter.
 
-![Capture_CompteConsulter_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/72819614-f179-4057-b046-738d97ed5b66/Capture_CompteConsulter_Red.PNG)
+![Capture_CompteConsulter_Red.png](Capture_CompteConsulter_Red.png)
 
 Sur la partie droite de l'écran sont affichées :
 
@@ -71,7 +71,7 @@ Sur la partie droite de l'écran sont affichées :
 
 ### Principales caractéristiques du compte
 
-![Capture_ComptePrincipalesCaractéristiques.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/aceaae24-fa80-45e2-8f3f-7b76c8448c52/Capture_ComptePrincipalesCaract%C3%A9ristiques.PNG)
+![Capture_ComptePrincipalesCaracteristiques.png](Capture_ComptePrincipalesCaracteristiques.png)
 
 * UID : l'identifiant technique de votre moyen de paiement aussi appelé MerID
 * Clé : la clé privé de votre moyen de paiement ; elle permet d'authentifier et sécuriser les échanges d'information par une signature. ⚠️ la clé est facultative et son utilisation réservée aux développeurs.
@@ -83,7 +83,7 @@ Sur la partie droite de l'écran sont affichées :
 
 Cliquez sur la petite icone "crayon de modification" située sous les collaborateurs des caractéristiques principales du compte.
 
-![Capture_CompteModification1.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/a78b4a6f-56af-4efe-b28d-f0dc821a772b/Capture_CompteModification1.PNG)
+![Capture_CompteModification1.png](Capture_CompteModification1.png)
 
 Modifiez les informations souhaitées et cliquez sur le bouton "Modifier".
 
@@ -95,7 +95,7 @@ Les champs suivants sont modifiables :
 * "Nombre d'échéances" (**non modifiable**) : le nombre d'échéances de votre moyen de paiement dans le cas d'un paiement fractionné (dans cet exemple "2 échéances") ; à titre informatif, sur le droite vous trouverez les frais appliqués sur l'acheteur (dans cet exemple 0,5%)
 * "Signature requise" : activez ou désactivez la signature pour ce compte
 
-![Capture_CompteModification2_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/65c62cba-f906-49ce-bdf9-92b25b05ca33/Capture_CompteModification2_Red.png)
+![Capture_CompteModification2_Red.png](Capture_CompteModification2_Red.png)
 
 En dessous des caractéristiques modifiables du compte, vous pouvez ajouter/supprimer et consulter la liste des collaborateurs ayant accès au compte.
 
@@ -103,7 +103,7 @@ En dessous des caractéristiques modifiables du compte, vous pouvez ajouter/supp
 
 Dans la liste des comptes, cliquez sur le compte / moyen de paiement pour lequel vous voulez consultez les derniers paiements.
 
-![Capture_CompteDerniersPaiements_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/bb73d40b-3d0f-4c59-87ad-eab86afb1a55/Capture_CompteDerniersPaiements_Red.png)
+![Capture_CompteDerniersPaiements_Red.png](Capture_CompteDerniersPaiements_Red.png)
 
 La liste des cinq derniers paiements est affichée avec :
 
@@ -112,7 +112,8 @@ La liste des cinq derniers paiements est affichée avec :
 
   - `COLLECTING` : Paiement accepté
   - `PRIMARY_KO` : Transaction refusée
-
+  - `SCORING_KO` : Transaction refusée (le score du client est trop faible)
+  - `CANCELLED` : Transaction annulée
 * La référence du marchand communiquée au paiement Pledg
 * L'identification du client : son email et éventuellement son numéro de téléphone
 * La date du paiement
@@ -121,7 +122,7 @@ La liste des cinq derniers paiements est affichée avec :
 
 Cliquez sur "Tout afficher" pour consulter l'ensemble des paiements réalisés sur ce compte.
 
-![Capture_CompteTousPaiements_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/dd4736b4-3d99-48d0-a0a2-7db7e0bb437f/Capture_CompteTousPaiements_Red.png)
+![Capture_CompteTousPaiements_Red.png](Capture_CompteTousPaiements_Red.png)
 
 Des outils en haut de la liste vous permettent de :
 
@@ -135,25 +136,86 @@ Pour obtenir le détail d'un paiement, cliquez sur l'œil situé à droite de la
 
 Cliquez sur l'œil du paiement que vous voulez consulter.
 
-![Capture_PurchaseDetailMain_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/d1f6be47-edc6-459b-9bfd-71bf02c5b2eb/Capture_PurchaseDetailMain_Red.png)
+![Capture_PurchaseDetailMain_Red.png](Capture_PurchaseDetailMain_Red.png)
 
-Les principales caractéristiques du paiement sont suivies des blocs suivants:
+Les principales caractéristiques du paiement sont suivies des sections :
 
-* Les échéances
+* **Détail** :																							 
+  - Date : la date à laquelle la transaction a été faite
+  - Référence : la référence transmise à Pledg depuis votre site marchand
+  - Virement (mode `transfert` uniquement) : la référence du virement fait au marchand pour régler l'achat
+  - Carte virtuelle (uniquement pour les modes `back` et `front`) : le statut de la carte virtuelle auprès de notre banque. La signification des statuts est détaillée ci-dessous :
   
-- Dans le cadre d'un paiement fractionné, vous trouverez la liste des échéances avec les dates, montants et statuts associés :
-![Capture_PurchaseDetailEcheance.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/759e6d22-3c2d-4019-85d9-aa274c8020ad/Capture_PurchaseDetailEcheance.PNG)
+| Statut | Signification |
+| ----------- | ----------- |
+| `AUTHORIZED ON TIME` | la banque a reçu une demande d'autorisation du marchand dans les 3 minutes qui ont suivi la génération de la carte |
+| `NOT_AUTHORIZED_ON_TIME` | la banque n'a reçu aucune demande d'autorisation du marchand même au bout de 3 minutes |
+| `AUTHORIZED` | la banque a reçu une demande d'autorisation du marchand |
+| `DEBITED` | la banque a reçu une demande de débit du marchand |
+| `DEBITED_LOWER_AMOUNT` | la banque a reçu une demande de débit du marchand, pour un montant inférieur au montant autorisé |
+| `DEBITED_GREATER_AMOUNT` | la banque a reçu une demande de débit du marchand, pour un montant supérieur au montant autorisé |
+| `NOT DEBITED` | la banque a reçu une demande de débit du marchand, pour un montant supérieur au montant autorisé |
+| `CREDITED` | la banque a reçu une demande de crédit du marchand |
 
-- Dans le cadre d'un paiement différé, vous trouverez l'échéance avec sa date, montant et statut associé :
+* **Echéances**
+  
+  - Pour un paiement fractionné, vous trouverez la liste des échéances avec les dates, montants et statuts associés :
+![Capture_PurchaseDetailEcheance.png](Capture_PurchaseDetailEcheance.png)
+  - Pour un paiement différé, vous trouverez l'échéance avec sa date, montant et statut associé :
+![Capture_PurchaseDetailEcheance_2.png](Capture_PurchaseDetailEcheance_2.png)
 
-![Capture_PurchaseDetailEcheance_2.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/a29110c5-e169-454b-9aee-ee09227e0a2a/Capture_PurchaseDetailEcheance_2.PNG)
+* **Les remboursements / Refunds**
 
-* Les remboursements / Refunds
+Des remboursements partiels ou en totalité peuvent être faits sur un paiement. Vous avez la possibilité de suivre l'état des remboursements ou de procéder à une demande de remboursement pour les comptes paramétrés en mode transfert.
 
-![Capture_PurchaseDetailRefund.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/b2cd060a-b496-4c7a-bcae-18d733fd3678/Capture_PurchaseDetailRefund.PNG)
+![Capture_PurchaseDetailRefund.png](Capture_PurchaseDetailRefund.png)
+
+Si des remboursements ont été faits, la liste des opérations de remboursement est affichée.
+
+![Capture_Refund_List.png](Capture_Refund_List.png)
+
+Pour procéder au remboursement d'un client, le fonctionnement est différent entre les modes utilisant une carte virtuelle (`front` et `back`) et le mode `transfer` :
+
+* Mode `front` et `back` (avec carte virtuelle) : connectez-vous à votre PSP (Prestataire de Service de Paiement) et recréditez la carte virtuelle ; la carte bancaire du client sera recréditée par la suite
+* Mode `transfer` : la demande de remboursement se fait depuis le dashbord Pledg :
+
+    - Cliquez sur le bouton "Demander un remboursement"
+    - Renseignez le montant que vous voulez rembourser
+    - Cliquez sur "Demander un remboursement" ; une notification vous indiquera que le remboursement a été pris en compte
+
+![Capture_Refund_Demande.png](Capture_Refund_Demande.png)
+
+**Remarques concernant le mode `transfer`**
+::: tip
+Pour rembourser la **totalité** de la commande d'un client, il faut que vous renseignez le montant total de la commande du client ; Si vous renseignez le montant correspondant aux échéances prélevées, cela correspondra à un remboursement partiel et les autres échéances seront débitées.
+Pour rembourser **partiellement** une commande d'un client, renseignez le montant que vous voulez rembourser. Cette demande partielle ne produira pas forcément un crédit sur la carte bancaire du client. Le montant que vous voulez rembourser réduira ou annulera en priorité les échéances de prélèvement les plus lointaines du client.
+:::
+
+::: tip
+Les remboursements sont généralement effectifs a **J+1** et apparaitrons à ce moment là dans la liste des remboursements du paiement dans le dashboard.
+:::
 
 ## Consultation des derniers virements
 
-A compléter
+Pour les comptes configurés en mode `transfer`, à savoir un virement quotidien est envoyé au marchand d'un montant correspondant à l'ensemble des commandes de la journée, la liste des virements effectués est consultable.
+
+Cette section vous permet de réconcilier le paiement de vos commandes avec les virements que vous recevez sur votre compte bancaire.
+
+![Capture_DerniersVirements_Red.png](Capture_DerniersVirements_Red.png)
+
+Informations:
+
+* Montant : le montant du virement
+* Statut : `sent` lorsque le virement a bien été émis
+* Reference : la référence du virement transmise
+* Date : la date du virement
+
+Cliquez sur le bouton "Tout afficher" pour voir la liste de tous les virements. Vous pouvez alors consulter le détail d'un virement avec la liste des commandes concernées.
+
+![Capture_DerniersVirements_Details_Red.png](Capture_DerniersVirements_Details_Red.png)
+
+Dans la section des "Paiements", vous pouvez consulter la liste de commandes correspondantes ainsi que la référence que vous avez transmise à Pledg.
+
+Lorsque le montant est négatif, cela correspond à un remboursement. Quand vous procédez à une demande de remboursement, nous prélevons le montant du remboursement sur votre compte bancaire puis créditons la carte bancaire du client.
 
 Si vous avez des questions francois.delaitre@pledg.co 👋
