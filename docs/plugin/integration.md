@@ -218,8 +218,8 @@ All available settings, required and optional, are detailed below.
 | `paymentNotificationUrl` | `string` | Merchant URL (*https://www.example.com*) or email address (*mailto:john.doe@gmail.com*) to call at the payment end | Not Used |
 | [`metadata`](https://pledgcorporate.github.io/ecard-plugin-doc/#/plugin/README?id=metadata) | `Object` | Merchant-specific data (typically, a tour operator may set `{departure_date: "2019-02-01"}` in this field) | Not Used |
 | `countryCode` | `string` | Can be used to override merchant `Country code` from [Merchant parameters](#merchant-parameters) settings for a purchase | Not Used |
-| `redirectUrl` | `string` | URL where the customer must be redirected after the payment (required in the redirection payment without iframe) | Not Used |
-| `cancelUrl` | `string` | URL where the customer must be redirected when he cancels the payment or when the payment fails (required in the redirection payment without iframe) | Not Used |
+| `redirectUrl` | `string` | URL where the customer must be redirected after the payment (required in direct call or in redirection payment without iframe) | Not Used |
+| `cancelUrl` | `string` | URL where the customer must be redirected when he cancels the payment or when the payment fails (required in direct call or in redirection payment without iframe) | Not Used |
 | `balancePaymentDate` | `string` | Date of payment of the balance (`YYYY-MM-DD`). The presence of this parameter indicates that the payment must be split between a deposit and a balance. | Not Used |
 | `deferredPaymentDate` | `string` | Date of deferred payment (`YYYY-MM-DD`). Only for DEFERRED payments. The latest possible date of deferred payment is always today + the delay in days specified in the configuration. If `deferredPaymentDate` is set, it is the deferred payment date, and it must be before the latest possible one. If `deferredPaymentDate` is not set, the deferred payment date is the latest possible one. | Not Used |
 | `secondInstallmentPaymentDate` | `string` | Date of the second installment (`YYYY-MM-DD`). Only for INSTALLMENT payments. Delays the second installment at the specified date. All the following shares will start from `secondInstallmentPaymentDate` and be monthly separated. See details [below](#how-to-delay-the-second-share-expiration-date-for-installment-payments). | Not Used |
@@ -661,6 +661,17 @@ When the merchant wants to refund a customer, there are 2 situations:
 
 For the payment by transfer, the merchant can issue a refund by using the endpoint `https://back.ecard.pledg.co/api/purchases/{purchase_uid}/credit_by_transfer POST`, with the desired `amount_cents` in the body
 
+### Amount and type of the initial charge
+
+The amount of the initial charge made on the customer account as well as its type (preauthorization or capture) depends on the payment facility.
+
+| Payment facility | Type              | Amount                          |
+| ---------------- | ----------------- | ------------------------------- |
+| Split            | Preauthorization  | Total amount of the purchase    |
+| Installment      | Capture           | Amount of the first installment |
+| Deferred         | Preauthorization  | Percentage of the total amount of the purchase |
+| Down payment     | Capture           | Amount of the deposit           |
+
 ## Specificities of the different modes
 
 ### Front mode
@@ -670,67 +681,29 @@ For the payment by transfer, the merchant can issue a refund by using the endpoi
 This mode should be used when the card payment form is a plain form (i.e. not an iframe) hosted on the merchant's payment page.
 In this case, the eCard information can be directly passed to the card payment form on the merchant frontend.
 
-#### Split payment workflow
+#### Sequence diagram
 
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills his email and the emails or phone numbers of his co-buyers
-3. The user fills out his card details
-4. The Pledg backend completes a preauthorisation on the user bank account, for the total amount of the purchase, to the credit of the Pledg bank account. For security purposes, Pledg does not store the user's card details. It only stores a reference to the card in order to make the payment later.
-5. The Pledg backend generates an eCard credited with the total amount of the purchase
-6. The plugin returns the details of the eCard
-7. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
-8. The user lands on the merchant payment confirmation page
-9. The Pledg backend sends an email to the user and an email or an SMS to his co-buyers
-
-#### Installment payment workflow
-
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills out his card details
-3. The Pledg backend completes a capture on the user's card, for the amount of the first installment
-4. The Pledg backend generates an eCard credited with the total amount of the purchase
-5. The plugin returns the details of the eCard
-6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
-7. The user lands on the merchant payment confirmation page
-
-#### Deferred payment workflow
-
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills out his card details
-3. The Pledg backend completes a preauthorization on the user's card, for an amount of 50 cents
-4. The Pledg backend generates an eCard credited with the total amount of the purchase
-5. The plugin returns the details of the eCard
-6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
-7. The user lands on the merchant payment confirmation page
-
-#### Down payment workflow
-
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills out his card details
-3. The Pledg backend completes a capture on the user's card, for the amount of the deposit
-4. The Pledg backend generates an eCard credited with the total amount of the purchase
-5. The plugin returns the details of the eCard
-6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
-7. The user lands on the merchant payment confirmation page
-
-#### Redirection payment workflow in an iframe
-
-1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel inside an iframe
-2. The user completes the payment in the external PSP web site
-3. The Pledg backend is notified by the PSP that the payment completed
-4. The Pledg backend generates an eCard credited with the total amount of the purchase
-5. The plugin returns the details of the eCard
-6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
-7. The user lands on the merchant payment confirmation page
-
-#### Redirection payment workflow in a new page
-
-1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel in a new page
-2. The user completes the payment in the external PSP web site
-3. The Pledg backend is notified by the PSP that the payment completed
-4. The Pledg backend generates an eCard credited with the total amount of the purchase
-5. The customer is redirected to the merchant web site (which is normally notified by its PSP that the payment was completed), with the details of the eCard appended to the URL
-6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
-7. The user lands on the merchant payment confirmation page
+```mermaid
+sequenceDiagram
+Note right of Merchant Front: The customer clicks<br>on the Pledg button
+Merchant Front->> Pledg Plugin: Javascript call
+Note right of Pledg Plugin: The Pledg Plugin opens<br>inside the Merchant Front<br>an iframe containing<br>the Pledg Front
+Pledg Plugin->> Pledg Front: HTTP GET
+Note right of Pledg Front: The customer validates<br>the terms of the<br>payment facility
+Note right of Pledg Front: The customer sets<br>the cards details
+Pledg Front->> Pledg PSP: Customer card details
+Pledg PSP->> Pledg Front: Token
+Pledg Front->> Pledg Back: Token
+Note right of Pledg Back: The token is registered<br>for future use
+Pledg Back->> Pledg PSP: Charge request
+Pledg PSP->> Pledg Back: OK
+Pledg Back->> Pledg Virtual card provider: Virtual card request
+Pledg Virtual card provider->> Pledg Back: Virtual card details
+Pledg Back->> Pledg Front: Virtual card details
+Pledg Front->> Pledg Plugin: Virtual card details
+Pledg Plugin->> Merchant Front: Virtual card details
+Merchant Front->> Merchant Back: Virtual card details
+```
 
 #### Integration
 
@@ -809,71 +782,32 @@ This mode should be used when:
 1. The payment page is hosted by the merchant's Payment Service Provider or
 2. The payment form is integrated on an iframe on the merchant's payment page. This is the case when the eCard information cannot be directly passed to the card payment form on the merchant frontend.
 
-#### Split payment workflow
+#### Sequence diagram
 
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills his email and the emails or phone numbers of his co-buyers
-3. The user fills out his card details
-4. The Pledg backend completes a preauthorisation on the user bank account, for the total amount of the purchase, to the credit of the Pledg bank account. For security purposes, Pledg does not store the user's card details. It only stores a reference to the card in order to make the payment later.
-5. The Pledg backend generates an eCard credited with the total amount of the purchase
-6. The Pledg backend submits the eCard to the merchant PSP for payment, via the PSP API
-7. The plugin returns the result of the payment
-8. The merchant frontend submits the result of the payment to the merchant backend
-9. The user lands on the merchant payment confirmation page
-10. The Pledg backend sends an email to the user and an email or an SMS to his co-buyers
-
-#### Installment payment workflow
-
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills out his card details
-3. The Pledg backend completes a capture on the user's card, for the amount of the first installment
-4. The Pledg backend generates an eCard credited with the total amount of the purchase
-5. The Pledg backend submits the eCard to the merchant PSP for payment, via the PSP API
-6. The plugin returns the result of the payment
-7. The merchant frontend submits the result of the payment to the merchant backend
-8. The user lands on the merchant payment confirmation page
-
-#### Deferred payment workflow
-
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills out his card details
-3. The Pledg backend completes a preauthorization on the user's card, for an amount of 50 cents
-4. The Pledg backend generates an eCard credited with the total amount of the purchase
-5. The Pledg backend submits the eCard to the merchant PSP for payment, via the PSP API
-6. The plugin returns the result of the payment
-7. The merchant frontend submits the result of the payment to the merchant backend
-8. The user lands on the merchant payment confirmation page
-
-#### Down payment workflow
-
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills out his card details
-3. The Pledg backend completes a capture on the user's card, for the amount of the deposit
-4. The Pledg backend generates an eCard credited with the total amount of the purchase
-5. The Pledg backend submits the eCard to the merchant PSP for payment, via the PSP API
-6. The plugin returns the result of the payment
-7. The merchant frontend submits the result of the payment to the merchant backend
-8. The user lands on the merchant payment confirmation page
-
-#### Redirection payment workflow in an iframe
-
-1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel inside an iframe
-2. The user completes the payment in the external PSP web site
-3. The Pledg backend is notified by the PSP that the payment completed
-4. The Pledg backend generates an eCard credited with the total amount of the purchase
-5. The Pledg backend submits the eCard to the merchant PSP for payment, via the PSP API
-6. The plugin returns the result of the payment
-7. The merchant frontend submits the result of the payment to the merchant backend
-8. The user lands on the merchant payment confirmation page
-
-#### Redirection payment workflow in a new page
-
-1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel in a new page
-2. The user completes the payment in the external PSP web site
-3. The Pledg backend is notified by the PSP that the payment completed
-4. The Pledg backend generates an eCard credited with the total amount of the purchase
-5. The Pledg backend submits the eCard to the merchant PSP for payment, via the PSP API
-6. The customer is redirected to the merchant web site (which is normally notified by its PSP that the payment was completed), with the result of the payment appended to the URL
+```mermaid
+sequenceDiagram
+Note right of Merchant Front: The customer clicks<br>on the Pledg button
+Merchant Front->> Pledg Plugin: Javascript call
+Note right of Pledg Plugin: The Pledg Plugin opens<br>inside the Merchant Front<br>an iframe containing<br>the Pledg Front
+Pledg Plugin->> Pledg Front: HTTP GET
+Note right of Pledg Front: The customer validates<br>the terms of the<br>payment facility
+Note right of Pledg Front: The customer sets<br>the cards details
+Pledg Front->> Pledg PSP: Customer card details
+Pledg PSP->> Pledg Front: Token
+Pledg Front->> Pledg Back: Token
+Note right of Pledg Back: The token is registered<br>for future use
+Pledg Back->> Pledg PSP: Charge request
+Pledg PSP->> Pledg Back: OK
+Pledg Back->> Pledg Virtual card provider: Virtual card request
+Pledg Virtual card provider->> Pledg Back: Virtual card details
+Pledg Back->> Merchant PSP: Charge request
+Merchant PSP->>Pledg Back: Transaction result
+Pledg Back->> Pledg Front: Transaction result
+Merchant PSP->>Merchant Back: Notification
+Pledg Front->> Pledg Plugin: Transaction result
+Pledg Plugin->> Merchant Front: Transaction result
+Merchant Front->> Merchant Back: Transaction result
+```
 
 #### Integration
 
@@ -882,11 +816,11 @@ This mode should be used when:
 When the PSP of the merchant is Adyen, the merchant must provide to Pledg
 the following parameters:
 
-| description | example |
-|---------------|---------|
-| Account username  | |
-| Password | |
-| Your merchant account (upper left hand corner of your Adyen dashboard) | |
+| description                                                            |
+|------------------------------------------------------------------------|
+| Account username                                                       |
+| Password                                                               |
+| Your merchant account (upper left hand corner of your Adyen dashboard) |
 
 ##### SystemPay / PayZen
 
@@ -895,29 +829,29 @@ the following parameters:
 
 - For SOAP webservices:
 
-| description | example |
-|---------------|---------|
-| Shop id  | |
-| Production Certificate | |
+| description            |
+|------------------------|
+| Shop id                |
+| Production Certificate |
 
 - For REST webservices:
 
-| description | example |
-|---------------|---------|
-| username  | |
-| password | |
+| description   |
+|---------------|
+| username      |
+| password      |
 
 ##### Ogone
 
 When the PSP of the merchant is Ogone , the merchant must provide to Pledg
 the following parameters:
 
-| description | example |
-|---------------|---------|
-| Login | |
-| Api User |  |
-| Api Password | |
-| Signature | |
+| description   |
+|---------------|
+| Login         |
+| Api User      |
+| Api Password  |
+| Signature     |
 
 Login is the global account.
 To more infos about the Api User please see:
@@ -1089,61 +1023,28 @@ Instead of paying the merchant using an ecard, payment will be done by sending m
 Once a purchase is validated from Pledg side, the full purchase amount will be transfered to the merchant at the end of the day (money should be received in the next 3 business days).
 If several purchases are made for a given merchant, they will be aggregated all together in one transfer.
 
-#### Split payment workflow
+#### Sequence diagram
 
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills his email and the emails or phone numbers of his co-buyers
-3. The user fills out his card details
-4. The Pledg backend completes a preauthorisation on the user bank account, for the total amount of the purchase, to the credit of the Pledg bank account. For security purposes, Pledg does not store the user's card details. It only stores a reference to the card in order to make the payment later.
-5. The Pledg backend adds the purchase amount to the global amount it will transfer to the merchant at the end of the day.
-6. The plugin returns the result of the payment
-7. The user lands on the merchant payment confirmation page
-8. The Pledg backend sends an email to the user and an email or an SMS to his co-buyers
-
-#### Installment payment workflow
-
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills out his card details
-3. The Pledg backend completes a capture on the user's card, for the amount of the first installment
-4. The Pledg backend adds the purchase amount to the global amount it will transfer to the merchant at the end of the day.
-5. The plugin returns the result of the payment
-6. The user lands on the merchant payment confirmation page
-
-#### Deferred payment workflow
-
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills out his card details
-3. The Pledg backend completes a preauthorization on the user's card, for an amount of 50 cents
-4. The Pledg backend adds the purchase amount to the global amount it will transfer to the merchant at the end of the day.
-5. The plugin returns http 200
-6. The user lands on the merchant payment confirmation page
-
-#### Down payment workflow
-
-1. The user clicks on the Pledg payment button, which opens the Pledg payment funnel inside an iframe
-2. The user fills out his card details
-3. The Pledg backend completes a capture on the user's card, for the amount of the deposit
-4. The Pledg backend adds the purchase amount to the global amount it will transfer to the merchant at the end of the day.
-5. The plugin returns the result of the payment
-6. The user lands on the merchant payment confirmation page
-
-#### Redirection payment workflow in an iframe
-
-1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel inside an iframe
-2. The user completes the payment in the external PSP web site
-3. The Pledg backend is notified by the PSP that the payment completed
-4. The Pledg backend adds the purchase amount to the global amount it will transfer to the merchant at the end of the day.
-5. The plugin returns the result of the payment
-6. The user lands on the merchant payment confirmation page
-
-#### Redirection payment workflow in a new page
-
-1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel in a new page
-2. The user completes the payment in the external PSP web site
-3. The Pledg backend is notified by the PSP that the payment completed
-4. The Pledg backend adds the purchase amount to the global amount it will transfer to the merchant at the end of the day.
-5. The customer is redirected to the merchant web site (which is normally notified by its PSP that the payment was completed)
-6. The user lands on the merchant payment confirmation page
+```mermaid
+sequenceDiagram
+Note right of Merchant Front: The customer clicks<br>on the Pledg button
+Merchant Front->> Pledg Plugin: Javascript call
+Note right of Pledg Plugin: The Pledg Plugin opens<br>inside the Merchant Front<br>an iframe containing<br>the Pledg Front
+Pledg Plugin->> Pledg Front: HTTP GET
+Note right of Pledg Front: The customer validates<br>the terms of the<br>payment facility
+Note right of Pledg Front: The customer sets<br>the cards details
+Pledg Front->> Pledg PSP: Customer card details
+Pledg PSP->> Pledg Front: Token
+Pledg Front->> Pledg Back: Token
+Note right of Pledg Back: The token is registered<br>for future use
+Pledg Back->> Pledg PSP: Charge request
+Pledg PSP->> Pledg Back: OK
+Note right of Pledg Back: The Pledg Back<br>registers the transfer<br> for future execution
+Pledg Back->> Pledg Front: OK
+Pledg Front->> Pledg Plugin: OK
+Pledg Plugin->> Merchant Front: OK
+Merchant Front->> Merchant Back: OK
+```
 
 #### Integration
 
@@ -1195,3 +1096,54 @@ If there is a `secret` in your [Merchant parameters](#merchant-parameters), it w
 #### Demo
 
 A demo is available [there](https://staging.merchant.ecard.pledg.co/transfer-demo.html).
+
+## Workflows of the redirection payment
+
+For the redirection payment, the workflows mentioned above are not completely relevant and are detailed below.
+
+### Redirection in an iframe
+
+1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel inside an iframe
+2. The user completes the payment in the external PSP web site
+3. The Pledg backend is notified by the PSP that the payment completed
+
+Front mode:
+4. The Pledg backend generates an eCard credited with the total amount of the purchase
+5. The plugin returns the details of the eCard
+6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
+7. The user lands on the merchant payment confirmation page
+
+Back mode:
+4. The Pledg backend generates an eCard credited with the total amount of the purchase
+5. The Pledg backend submits the eCard to the merchant PSP for payment, via the PSP API
+6. The plugin returns the result of the payment
+7. The merchant frontend submits the result of the payment to the merchant backend
+8. The user lands on the merchant payment confirmation page
+
+Transfer mode:
+4. The Pledg backend adds the purchase amount to the global amount it will transfer to the merchant at the end of the day.
+5. The plugin returns the result of the payment
+6. The user lands on the merchant payment confirmation page
+
+### Redirection in a new page
+
+1. The user clicks on the Pledg payment button, which opens the external PSP payment funnel in a new page
+2. The user completes the payment in the external PSP web site
+3. The Pledg backend is notified by the PSP that the payment completed
+
+Front mode:
+4. The Pledg backend generates an eCard credited with the total amount of the purchase
+5. The customer is redirected to the merchant web site (which is normally notified by its PSP that the payment was completed), with the details of the eCard appended to the URL
+6. The merchant frontend submits the eCard to the merchant backend for payment, as if it was a standard card
+7. The user lands on the merchant payment confirmation page
+
+Back mode:
+4. The Pledg backend generates an eCard credited with the total amount of the purchase
+5. The Pledg backend submits the eCard to the merchant PSP for payment, via the PSP API
+6. The customer is redirected to the merchant web site (which is normally notified by its PSP that the payment was completed), with the result of the payment appended to the URL
+
+Transfer mode:
+4. The Pledg backend adds the purchase amount to the global amount it will transfer to the merchant at the end of the day.
+5. The customer is redirected to the merchant web site (which is normally notified by its PSP that the payment was completed)
+6. The user lands on the merchant payment confirmation page
+

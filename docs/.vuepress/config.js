@@ -152,5 +152,6 @@ module.exports = {
       },
     },
     ["vuepress-plugin-code-copy", true],
+    "vuepress-plugin-mermaidjs"
   ],
 };
