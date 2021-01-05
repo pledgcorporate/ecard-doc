@@ -146,11 +146,12 @@ module.exports = {
     {
       ga: "", // UA-00000000-0
     },
-    {
-      "sitemap": {
+    [
+      "sitemap",
+      {
         hostname: "https://docs.pledg.co",
       },
-    },
+    ],
     ["vuepress-plugin-code-copy", true],
     "vuepress-plugin-mermaidjs"
   ],
