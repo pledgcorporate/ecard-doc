@@ -19,7 +19,7 @@ with the amount of the purchase, and within the next 3 business days.
 
 The code of the payment page/screen of the merchant just has to call the plugin/SDK, initialized with:
 
-- The details of the purchase (amount, currency, reference, etc. - see [Settings](/plugin/README#settings))
+- The details of the purchase (amount, currency, reference, etc. - see [Settings](/plugin/integration.html#settings))
 - The callback to execute after receiving the result from the plugin/SDK
 
 The plugin/SDK can be used in two different modes: front mode and back mode. The

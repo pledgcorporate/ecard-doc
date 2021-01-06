@@ -29,7 +29,7 @@ In parallel, the merchant indicates to Pledg the values to be assigned to the co
 | Send confirmation email | All| All | Yes | If *true* send confirmation email at the end of the transaction. | |
 | Preauthorization renewal period | All| All | No | Duration in days after which the non-captured preauthorizations are renewed (*7* by default) | |
 | Leader can pay alone | Split| All | No | If *true*, the split payment mechanism is used even if the user did not specify any co-buyer (*true* by default) | |
-| Purchase end notification URL | Split| All | No | URL to notify the merchant of the end of the split payment of the purchase | See [Notifications](#notifications) |
+| Purchase end notification URL | Split| All | No | URL to notify the merchant of the end of the split payment of the purchase | See [Split purchase end notification](#split-purchase-end-notification) |
 | Deposit percentage | Down payment| All | No/Yes | Ratio between the amount of the deposit and the amount of the purchase (only if the payment is split between a deposit and a balance) | |
 | Maximum balance payment delay | Down payment| All | No/Yes | Maximum delay, in days, between the creation of the purchase and the payment of the balance  (only if the payment is split between a deposit and a balance) | |
 | Number of installments | Installment| All | Yes | Number of installments | |
@@ -601,7 +601,7 @@ new Pledg(button, {
 </script>
 ```
 
-## Split Purchase End Notification
+## Split purchase end notification
 
 The merchant can define a webhook to be notified of the end of the split purchase.
 
@@ -661,7 +661,7 @@ When the merchant wants to refund a customer, there are 2 situations:
 
 For the payment by transfer, the merchant can issue a refund by using the endpoint `https://back.ecard.pledg.co/api/purchases/{purchase_uid}/credit_by_transfer POST`, with the desired `amount_cents` in the body
 
-### Amount and type of the initial charge
+## Amount and type of the initial charge
 
 The amount of the initial charge made on the customer account as well as its type (preauthorization or capture) depends on the payment facility.
 
