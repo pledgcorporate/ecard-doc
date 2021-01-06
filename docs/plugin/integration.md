@@ -1,4 +1,4 @@
-# Plugin integration
+# Integration
 
 ## Merchant parameters
 
@@ -546,132 +546,6 @@ Many examples of integration are available [online](https://staging.merchant.eca
 
 The easiest way to integrate the plugin is to copy/paste the code of the most relevant example and to adapt it to your particuliar needs.
 
-## Tag manager
-
-The code of the plugin and the code to instantiate the plugin can be loaded by a tag manager.
-Be aware that tag manager is likely to be blocked by content blockers (ads, tracking).
-Including this script through it may cause issues if tag manager don't load properly.
-
-The configuration for GTM is the following:
-
-1. Create a tag in the Google Tag Manager interface. This tag has a GTM_ID and contains a piece of HTML/Javascript code to be injected in the payment page.
-
-2. Set in the tag the code detailed in the [JavaScript](#javascript) section above. The only difference is that the parameters passed to the plugin are the attributes of the `dataLayer` structure (see the following step).
-
-```javascript
-<script src="https://s3-eu-west-1.amazonaws.com/pledg-assets/ecard-plugin/<BRANCH>/plugin.min.js"></script>
-
-<script type="text/javascript">
-
-var button = document.querySelector("#pledg-button")
-
-new Pledg(button, {
-    // the Pledg merchant id
-    merchantUid: "mer_uid",
-    title: {{dataLayer - title}},
-    subtitle: {{dataLayer - subtitle}},
-    email: document.querySelector("#customer-email").value,
-    amountCents: {{dataLayer - amountCents}},
-    reference: {{dataLayer- reference}},
-    currency: {{dataLayer - currency}},
-    ...
-})
-...
-</script>
-```
-
-3. At the beginning of the `head` and `body` sections of the HTML payment page, add the scripts provided by the Google Tag Manager (see the section *Install Google Tag Manager* in the Google Tag Manager administration interface)
-
-4. At the bottom of the HTML payment page, set the `dataLayer` variables and trigger the event to load the tag
-
-```javascript
-<script type="text/javascript">
-    // Set the variables
-    dataLayer.push({
-        "title": "STAY IN LONDON",
-        "subtitle": "Fly + Hotel 2 nights (3 rooms)",
-        "amountCents": 30550,
-        "reference": "order_123",
-        "currency": "EUR"
-    })
-    // Trigger the tag once dataLayer variables are set
-    dataLayer.push({
-        "event": "loadPledgTag"
-    })
-</script>
-```
-
-## Split purchase end notification
-
-The merchant can define a webhook to be notified of the end of the split purchase.
-
-This webhook is called when all co-buyers have paid their share or, at the latest, at the end of a period of 48 hours after the purchase
-
-This webhook is a *POST* which body contains the merchant reference of the purchase and the Pledg uid the purchase:
-
-```
-POST /merchant_webhook_purchase_end
-{"reference": "merchant_purchase_reference", "uid": "pledg_purchase_uid"}
-```
-
-This webhook is provided only for information, without any error managment or retry.
-
-## Direct call of the Pledg front
-
-Normally, the eCard plugin is loaded in the payment page of the merchant and the plugin calls the Pledg front in an iframe. All in all, for the merchant, the Pledg front is hidden behind by the plugin.
-
-Nevertheless, some merchants do not want to load the eCard plugin in their payment page. To address this use case, it is possible to call directly the Pledg front, without passing through the eCard plugin.
-
-The specificities of this integration are the following:
-* The settings `redirectUrl` and `cancelUrl` are mandatory
-* The settings `container`, `onSuccess`, `onCancel`, `onError` and `onOpen` are not applicable
-* The host of the Pledg front is `https://staging.front.ecard.pledg.co` in staging and `https://front.ecard.pledg.co` in production
-* It is recommended to add a random text at the end of the URL to prevent any caching effect
-
-An exemple of such an integration is available [there](https://staging.merchant.ecard.pledg.co/split-url-call.html).
-
-If you want to implement the direct call of the Pledg front with signed data, you can add the parameter `signature`
-to the url (see [Signature](#signature-of-the-parameters)).
-
-An exemple of direct call of Pledg front using signature can be found here [there](https://staging.merchant.ecard.pledg.co/split-url-call-with-signature.html)
-
-It must be underlined that this integration provides a worse user experience, compared to the integration with the plugin.
-
-## 3DS
-
-The virtual cards do not support the 3DS.
-
-Therefore, if, in some situations, the merchant forces the 3DS verification, it will always fail.
-
-To avoid this, the merchant should deactivate the 3DS verification for the virtual cards provided by Pledg, which can be identified with their BIN:
-- 522719 (for Edenred)
-- 513218 (for Arkea)
-
-## Refunds
-
-### Virtual Cards
-When the merchant wants to refund a customer, there are 2 situations:
-* The merchant has already debited the virtual card:
-  * The merchant must then recredit the virtual card. About 2 days later, Pledg will be notified of this recredit and will refund the customer.
-* The merchant has not debited the virtual card yet:
-  * If the merchant does nothing: Pledg will be notified about 10 days later that the virtual card has not been debited, and will refund the customer.
-  * If the merchant uses the endpoint `https://back.ecard.pledg.co/api/purchases/{purchase_uid}/release POST`, Pledg immediately refunds the customer. This endpoint is protected, i.e. the merchant must use the credentials provided by Pledg to that aim.
-
-### Transfer
-
-For the payment by transfer, the merchant can issue a refund by using the endpoint `https://back.ecard.pledg.co/api/purchases/{purchase_uid}/credit_by_transfer POST`, with the desired `amount_cents` in the body
-
-## Amount and type of the initial charge
-
-The amount of the initial charge made on the customer account as well as its type (preauthorization or capture) depends on the payment facility.
-
-| Payment facility | Type              | Amount                          |
-| ---------------- | ----------------- | ------------------------------- |
-| Split            | Preauthorization  | Total amount of the purchase    |
-| Installment      | Capture           | Amount of the first installment |
-| Deferred         | Preauthorization  | Percentage of the total amount of the purchase |
-| Down payment     | Capture           | Amount of the deposit           |
-
 ## Front mode
 
 ### Use case
@@ -1009,7 +883,7 @@ This webhook URL is an optional parameter of the purchase: `paymentNotificationU
 
 The principle is exactly the same as for Payzen, for the same reasons.
 
-#### Demo
+### Demo
 
 A demo is available [there](https://staging.merchant.ecard.pledg.co/back-stripe-demo.html).
 
@@ -1049,15 +923,6 @@ Merchant Front->> Merchant Back: OK
 This mode is particularly simple to deploy as there is strictly no
 configuration to be completed on the merchant backend or merchant PSP.
 
-For the specific case of a payment page using the Stripe form:
-* Different public Stripe keys must be used in the staging and the production
-* To determine if the Stripe form uses a token or a source:
-  * Open the Stripe form in a browser (see an example [there](https://staging.merchant.ecard.pledg.co/front-stripe-token-demo.html))
-  * Open the debugger in the browser
-  * Position the mouse in the debugger on the Stripe form
-  * Enter a card and validate
-  * Some hidden inputs should be added at the bottom of the form, indicating if a token or a source is used, with which labels
-
 ### Result
 
 The structure of the result passed to onSuccess is:
@@ -1094,6 +959,42 @@ If there is a `secret` in your [Merchant parameters](#merchant-parameters), it w
 ### Demo
 
 A demo is available [there](https://staging.merchant.ecard.pledg.co/transfer-demo.html).
+
+## Direct call of the Pledg front
+
+Normally, the eCard plugin is loaded in the payment page of the merchant and the plugin calls the Pledg front in an iframe. All in all, for the merchant, the Pledg front is hidden behind by the plugin.
+
+Nevertheless, some merchants do not want to load the eCard plugin in their payment page. To address this use case, it is possible to call directly the Pledg front, without passing through the eCard plugin.
+
+The specificities of this integration are the following:
+* The settings `redirectUrl` and `cancelUrl` are mandatory
+* The settings `container`, `onSuccess`, `onCancel`, `onError` and `onOpen` are not applicable
+* The host of the Pledg front is `https://staging.front.ecard.pledg.co` in staging and `https://front.ecard.pledg.co` in production
+* It is recommended to add a random text at the end of the URL to prevent any caching effect
+
+An exemple of such an integration is available [there](https://staging.merchant.ecard.pledg.co/split-url-call.html).
+
+If you want to implement the direct call of the Pledg front with signed data, you can add the parameter `signature`
+to the url (see [Signature](#signature-of-the-parameters)).
+
+An exemple of direct call of Pledg front using signature can be found here [there](https://staging.merchant.ecard.pledg.co/split-url-call-with-signature.html)
+
+It must be underlined that this integration provides a worse user experience, compared to the integration with the plugin.
+
+## Refunds
+
+### Front and back modes
+
+When the merchant wants to refund a customer, there are 2 situations:
+* The merchant has already debited the virtual card:
+  * The merchant must then recredit the virtual card. About 2 days later, Pledg will be notified of this recredit and will refund the customer.
+* The merchant has not debited the virtual card yet:
+  * If the merchant does nothing: Pledg will be notified about 10 days later that the virtual card has not been debited, and will refund the customer.
+  * If the merchant uses the endpoint `https://back.ecard.pledg.co/api/purchases/{purchase_uid}/release POST`, Pledg immediately refunds the customer. This endpoint is protected, i.e. the merchant must use the credentials provided by Pledg to that aim.
+
+### Transfer mode
+
+For the payment by transfer, the merchant can issue a refund by using the endpoint `https://back.ecard.pledg.co/api/purchases/{purchase_uid}/credit_by_transfer POST`, with the desired `amount_cents` in the body
 
 ## Redirection payment
 
@@ -1152,4 +1053,95 @@ c) Transfer mode:
 4. The Pledg backend adds the purchase amount to the global amount it will transfer to the merchant at the end of the day.
 5. The customer is redirected to the merchant web site (which is normally notified by its PSP that the payment was completed)
 6. The user lands on the merchant payment confirmation page
+
+## Tag manager
+
+The code of the plugin and the code to instantiate the plugin can be loaded by a tag manager.
+Be aware that tag manager is likely to be blocked by content blockers (ads, tracking).
+Including this script through it may cause issues if tag manager don't load properly.
+
+The configuration for GTM is the following:
+
+1. Create a tag in the Google Tag Manager interface. This tag has a GTM_ID and contains a piece of HTML/Javascript code to be injected in the payment page.
+
+2. Set in the tag the code detailed in the [JavaScript](#javascript) section above. The only difference is that the parameters passed to the plugin are the attributes of the `dataLayer` structure (see the following step).
+
+```javascript
+<script src="https://s3-eu-west-1.amazonaws.com/pledg-assets/ecard-plugin/<BRANCH>/plugin.min.js"></script>
+
+<script type="text/javascript">
+
+var button = document.querySelector("#pledg-button")
+
+new Pledg(button, {
+    // the Pledg merchant id
+    merchantUid: "mer_uid",
+    title: {{dataLayer - title}},
+    subtitle: {{dataLayer - subtitle}},
+    email: document.querySelector("#customer-email").value,
+    amountCents: {{dataLayer - amountCents}},
+    reference: {{dataLayer- reference}},
+    currency: {{dataLayer - currency}},
+    ...
+})
+...
+</script>
+```
+
+3. At the beginning of the `head` and `body` sections of the HTML payment page, add the scripts provided by the Google Tag Manager (see the section *Install Google Tag Manager* in the Google Tag Manager administration interface)
+
+4. At the bottom of the HTML payment page, set the `dataLayer` variables and trigger the event to load the tag
+
+```javascript
+<script type="text/javascript">
+    // Set the variables
+    dataLayer.push({
+        "title": "STAY IN LONDON",
+        "subtitle": "Fly + Hotel 2 nights (3 rooms)",
+        "amountCents": 30550,
+        "reference": "order_123",
+        "currency": "EUR"
+    })
+    // Trigger the tag once dataLayer variables are set
+    dataLayer.push({
+        "event": "loadPledgTag"
+    })
+</script>
+```
+
+## Split purchase end notification
+
+The merchant can define a webhook to be notified of the end of the split purchase.
+
+This webhook is called when all co-buyers have paid their share or, at the latest, at the end of a period of 48 hours after the purchase
+
+This webhook is a *POST* which body contains the merchant reference of the purchase and the Pledg uid the purchase:
+
+```
+POST /merchant_webhook_purchase_end
+{"reference": "merchant_purchase_reference", "uid": "pledg_purchase_uid"}
+```
+
+This webhook is provided only for information, without any error managment or retry.
+
+## 3DS
+
+The virtual cards do not support the 3DS.
+
+Therefore, if, in some situations, the merchant forces the 3DS verification, it will always fail.
+
+To avoid this, the merchant should deactivate the 3DS verification for the virtual cards provided by Pledg, which can be identified with their BIN:
+- 522719 (for Edenred)
+- 513218 (for Arkea)
+
+## Amount and type of the initial charge
+
+The amount of the initial charge made on the customer account as well as its type (preauthorization or capture) depends on the payment facility.
+
+| Payment facility | Type              | Amount                          |
+| ---------------- | ----------------- | ------------------------------- |
+| Split            | Preauthorization  | Total amount of the purchase    |
+| Installment      | Capture           | Amount of the first installment |
+| Deferred         | Preauthorization  | Percentage of the total amount of the purchase |
+| Down payment     | Capture           | Amount of the deposit           |
 

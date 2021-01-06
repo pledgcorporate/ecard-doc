@@ -1,4 +1,4 @@
-# Introduction
+# Presentation
 
 The `eCard` solution developed by [Pledg](https://www.pledg.co) is a Javascript
 plugin/mobile SDK allowing any e-merchant to propose the *split*, *installment*, *deferred*, *down payment* and *redirection payment* facilities to their customers:
