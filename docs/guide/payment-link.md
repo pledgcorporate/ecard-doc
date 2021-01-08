@@ -10,6 +10,11 @@ L'adresse de la [page de génération de lien de paiement](http://merchant.ecard
 
 où [mer_uid] est votre identifiant de compte fourni à l'inscription.
 
+Par défaut, les deux champs `redirect_url` et `cancel_url` sont initialisés avec l'URL de notre site https://pledg.co. 
+Vous pouvez personnaliser ces champs avec les URLs de votre choix:
+- redirect_url : le lien qui sera appelé après validation du paiement
+- cancel_url : le lien qui sera appelé après annulation du paiement par le client
+
 ## Renseignez votre identifiant de compte
 
 Renseignez votre identifiant de compte `mer_uid` en fonction du type de paiement choisi par l'acheteur.
