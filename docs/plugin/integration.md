@@ -994,7 +994,7 @@ When the merchant wants to refund a customer, there are 2 situations:
 
 ### Transfer mode
 
-For the payment by transfer, the merchant can issue a refund by using the endpoint `https://back.ecard.pledg.co/api/purchases/{purchase_uid}/credit_by_transfer POST`, with the desired `amount_cents` in the body
+For the payment by transfer, the merchant can issue a refund by using the endpoint `https://back.ecard.pledg.co/api/purchases/{purchase_uid}/credit_by_transfer POST`, with the desired `amount_cents` in the body. This endpoint is protected, i.e. the merchant must use the credentials provided by Pledg to that aim.
 
 ## Redirection payment
 
