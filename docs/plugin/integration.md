@@ -298,8 +298,7 @@ For B2B customers, the company id value is in the `session.customer_id`.
     "session": {
         "customer_id": "xxx",
         "duration_seconds": 4612,
-        "channel":  "desktop",
-        "ip": "192.168.0.1"
+        "channel":  "desktop"
     }
 }
 ```
