@@ -995,6 +995,18 @@ When the merchant wants to refund a customer, there are 2 situations:
 
 For the payment by transfer, the merchant can issue a refund by using the endpoint `https://back.ecard.pledg.co/api/purchases/{purchase_uid}/credit_by_transfer POST`, with the desired `amount_cents` in the body. This endpoint is protected, i.e. the merchant must use the credentials provided by Pledg to that aim.
 
+## Payment schedule simulation
+
+We offer the possibility for the merchant to simulate the payment schedule that the client would pay.
+It is a `post` request to the endpoint : `api/users/me/merchants/<string:merchant_uid>/simulate_payment_schedule`
+
+### JSON parameters
+| Parameter | Description | Required |
+|------|---------------|-----------|
+| `amount_cents` | amount_cents of the purchase | true |
+| `created` | date when the purchase would be created (format : "yyyy-mm-dd") | true |
+| `second_installment_date`|  for installment payments | false |
+
 ## Redirection payment
 
 For the redirection payment, the sequence diagrams mentioned above are not completely relevant.
