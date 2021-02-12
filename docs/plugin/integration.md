@@ -968,7 +968,8 @@ Nevertheless, some merchants do not want to load the eCard plugin in their payme
 The specificities of this integration are the following:
 * The settings `redirectUrl` and `cancelUrl` are mandatory
 * The settings `container`, `onSuccess`, `onCancel`, `onError` and `onOpen` are not applicable
-* The host of the Pledg front is `https://staging.front.ecard.pledg.co` in staging and `https://front.ecard.pledg.co` in production
+* The host of the URL is `https://staging.front.ecard.pledg.co` in staging and `https://front.ecard.pledg.co` in production
+* The path of the URL is  `/purchases`
 * It is recommended to add a random text at the end of the URL to prevent any caching effect
 
 An exemple of such an integration is available [there](https://staging.merchant.ecard.pledg.co/split-url-call.html).
@@ -979,6 +980,20 @@ to the url (see [Signature](#signature-of-the-parameters)).
 An exemple of direct call of Pledg front using signature can be found here [there](https://staging.merchant.ecard.pledg.co/split-url-call-with-signature.html)
 
 It must be underlined that this integration provides a worse user experience, compared to the integration with the plugin.
+
+## Direct call of the Pledg back
+
+This integration is possible only when the client pays by transfer.
+
+The API is exactly the same as [the one used to call the front](#direct-call-of-the-pledg-front), with the following differences:
+* The settings `redirectUrl` et `cancelUrl` are not applicable
+* The host of the URL is `https://staging.back.ecard.pledg.co` in staging and `https://back.ecard.pledg.co` in production
+* The path of the URL is `/api/payment_by_transfer`
+* The signature is mandatory
+
+To ease the accounting reconciliation, the client must set in the transfer descriptor the purchase UID returned by Pledg.
+
+An exemple of such an integration is available [there](https://staging.merchant.ecard.pledg.co/payment_by_transfer.html).
 
 ## Refunds
 
