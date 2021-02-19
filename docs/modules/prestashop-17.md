@@ -56,14 +56,12 @@ Le module sera automatiquement activé et apparaitra dans la section "PLUS" du m
 
 🔧 Sur votre Back Office Prestashop, vous pouvez ajouter les différents moyens de paiements Pledg.
 
- - Dans le menu de gauche, aller dans More > Pledg - Paiements [1]. Vous obtenez l'écran tel qu'indiqué sur l'image ci-dessous.
+ - Dans le menu de gauche, aller dans PLUS > Pledg - Paiements [1]. Vous obtenez l'écran tel qu'indiqué sur l'image ci-dessous, listant les modes de paiement déjà paramétrés.
  - Cliquer sur Ajouter paiement [2].
- 
- Vous 
- 
+
  ![AddPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.7/AddPayment.png)
 
-🔖 Compléter les informations :
+🔖 Compléter les informations puis cliquer sur enregistrer :
 
 ![FillNewPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.7/FillNewPayment.png)
 
