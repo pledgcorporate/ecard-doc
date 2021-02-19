@@ -56,21 +56,29 @@ Le module sera automatiquement activé et apparaitra dans la section "PLUS" du m
 
 🔧 Sur votre Back Office Prestashop, vous pouvez ajouter les différents moyens de paiements Pledg.
 
-Allez dans détails > Pledg - Paiements.
+ - Dans le menu de gauche, aller dans More > Pledg - Paiements [1]. Vous obtenez l'écran tel qu'indiqué sur l'image ci-dessous.
+ - Cliquer sur Ajouter paiement [2].
+ 
+ Vous 
+ 
+ ![AddPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.7/AddPayment.png)
 
 🔖 Compléter les informations :
 
-![Capture d’écran 2020-04-14 à 11.34.11.png](https://storage.googleapis.com/slite-api-files-production/files/558407ef-2e0e-4a6d-a7e0-b3a40d6c9745/Capture%2520d%25u2019e%25u0301cran%25202020-04-14%2520a%25u0300%252011.34.11.png)
+![FillNewPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.7/FillNewPayment.png)
 
 Description des champs :
 
 - Titre (obligatoire) : le titre du moyen de paiement ; ce titre apparaîtra à l'utilisateur (exemple : "Payez en 3x").
-- Activer le paiement : oui si vous voulez activer ce mode paiement.
-- Mode production : oui si vous voulez mettre ce mode de paiement en production.
-- Marchant ID (obligatoire) : votre identifiant Marchant ID associé au mode de paiement (communiqué par Pledg).
+- Paiement activé : activer / désactiver ce mode paiement.
+- Mode production : oui si vous voulez mettre ce mode de paiement en production, non pour l'utiliser en test.
+- Marchant ID (obligatoire) : votre identifiant Marchant ID associé au mode de paiement (communiqué par Pledg et commençant par "mer_").
+- Secret : Clé secrète de sécurisation des données de paiement (communiquée par Pledg et identique pour tous vos modes de paiement).
+- Minimum : Montant d'achat minimum permettant à vos utilisateurs de payer avec ce mode de paiement.
+- Maximum : Montant au delà duquel vos utilisateurs ne peuvent pas payer avec ce mode de paiement (si pas de plafond souhaité, indiquer 0).
+- Icône : Permet de télécharger une icône que vos utilisateurs verront à côté de ce mode de paiement.
 - Description : la description de votre paiement.
-
-⚠️ Les moyens de paiement Pledg s'afficheront sur votre page de paiement dans **l'ordre dans lequel vous les avez ajoutés**.
+- Position : ordre de priorité pour l'affichage de vos différents modes de paiement Pledg. 
 
 ## Etape 5 - Test
 
