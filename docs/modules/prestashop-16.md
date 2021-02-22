@@ -27,7 +27,7 @@ Avant de refaire l'installation, une désinstallation complète du module est n�
 
 ![Capture_UnInstallModule_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/9010e5b6-d143-4f3d-98e0-a32a7580f16b/Capture_UnInstallModule_Red.png)
 
-![Capture_UnInstallModule2_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/88772f17-8f58-4e8a-aa6b-c64765529aae/Capture_UnInstallModule2_Red.png)
+![UninstallModule.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.6/UnintallModule.png)
 
 ⚠️ Avant de procéder à la réinstallation du module Pledg, il faut vider le cache du Prestashop. Pour cela, allez dans "Paramètres avancés"/"Performances" puis cliquez sur "Vider le cache".
 
@@ -76,7 +76,7 @@ Une fois l'installation terminée, un nouvel élément "Pledg - Paiements" doit 
 
 - complétez les informations :
 
-![Capture_ConfigurationAddPaimentFields_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/fd761524-04cc-421a-a68a-5c02dc4eb6e2/Capture_ConfigurationAddPaimentFields_Red.png)
+![FillNewPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.6/FillNewPayment.png)
     - Remplissez les champs.
     - Cliquez sur le bouton "Enregistrer" ; une notification vous indiquera "Création réussie".
     - Répétez l'opération d'ajout pour tous vos modes de paiements Pledg.
@@ -87,12 +87,16 @@ Description des champs :
     - Activer le paiement : oui si vous voulez activer ce mode paiement.
     - Mode production : oui si vous voulez mettre ce mode de paiement en production.
     - Marchant ID (obligatoire) : votre identifiant Marchant ID associé au mode de paiement (communiqué par Pledg).
-    - Secret  (obligatoire) : votre clé secrète permettant de certifier les paiements (communiquée par Pledg).
+    - Secret : Clé secrète de sécurisation des données de paiement (communiquée par Pledg et identique pour tous vos modes de paiement).
+	- Minimum : Montant d'achat minimum permettant à vos utilisateurs de payer avec ce mode de paiement.
+	- Maximum : Montant au delà duquel vos utilisateurs ne peuvent pas payer avec ce mode de paiement (si pas de plafond souhaité, indiquer 0).
+	- Icône : Permet de télécharger une icône que vos utilisateurs verront à côté de ce mode de paiement.
     - Description : la description de votre paiement.
+	- Position : ordre de priorité pour l'affichage de vos différents modes de paiement Pledg.
 
 ⚠️ Les moyens de paiement Pledg s'afficheront sur votre page de paiement dans **l'ordre dans lequel vous les avez ajoutés**.
 
-## Etape 5 - Test
+## Etape 4 - Test
 
 Réalisez un test complet dans votre environnement :
 
