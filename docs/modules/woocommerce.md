@@ -33,16 +33,13 @@ Avant de refaire l'installation, une désinstallation complète du module est n�
 - Téléchargez le module WooCommerce de Pledg
 
   https://github.com/pledgcorporate/ecard-woocommerce/archive/master.zip
-
-* Préparez l'archive
-  - Décompressez l'archive téléchargée.
-  - Renommez le répertoire en "woocommerce_pledg" (attention pas de majuscules).
-  - Recompressez l'archive.
+  
+Récupérez l'archive telle quelle, puis :
 
 - Ajoutez le module dans WordPress
-  - Allez dans gestionnaire des modules via le menu "Plugins > Add new" et cliquez sur "Charger un module".
-  - Cliquez sur "Upload Plugin".
-  - Sélectionnez l'archive "woocommerce_pledg" au format zip et cliquez sur le bouton "Install Now".
+  - Allez dans gestionnaire des modules via le menu "Plugins > Add new" ("Extensions > Ajouter", si vous utilisez la version française) et cliquez sur "Charger un module".
+  - Cliquez sur "Upload Plugin" ("Téléverser une extension", en version française).
+  - Sélectionnez l'archive que vous venez de récupérer avec le lien ci-dessus (au format zip) et cliquez sur le bouton "Install Now" ("Installer Maintenant").
 
 ![Capture_Install_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/8081223d-fb75-48ee-8d4a-58b34ee9584a/Capture_Install_Red.PNG)
 
@@ -62,15 +59,19 @@ Pour chacun de vos identifiant de compte (`merchant_uid`), configurer une métho
 
 🔖 Cliquez sur le bouton "Set Up" et complétez les informations, puis cliquez une sur le bouton "Save changes" ; une notification vous informera que "Your settings have been saved.":
 
-![Capture d’écran 2020-05-18 à 16.27.04.png](https://storage.googleapis.com/slite-api-files-production/files/4668dda5-7a5f-4ea3-8bd5-fdc26710f20d/Capture%2520d%25u2019e%25u0301cran%25202020-05-18%2520a%25u0300%252016.27.04.png)
+![FillPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/FillPayment.png)
 
 Description des champs :
 
-- Titre (obligatoire) : le titre du moyen de paiement ; ce titre apparaîtra à l'utilisateur (exemple : "Payez en 3x").
+- Titre : Langue pour laquelle vous souhaitez définir le titre ci-dessous.
+- Titre ([LangueSélectionnéeCiDessus]) : le titre du moyen de paiement pour la langue sélectionnée ; ce titre apparaîtra à l'utilisateur (exemple : "Payez en 3x"). [Obligatoire]
 - Activer/Désactiver : oui si vous voulez activer ce mode paiement.
 - Mode développement/Mode production : oui si vous voulez mettre ce mode de paiement en production.
 - Merchant ID (obligatoire) : votre identifiant Merchant ID associé au mode de paiement (communiqué par Pledg).
-- Description : la description de votre paiement.
+- Description : Langue pour laquelle vous souhaitez définir la description ci-dessous.
+- Description ([LangueSélectionnéeCiDessus]) : la description de votre paiement.
+- Montant minimum de commande : panier minimum à partir duquel le mode de paiement sera proposé au client.
+- Montant maximum de commande : panier maximum au-delà duquel le mode de paiement ne sera proposé plus au client (indiquer "0" pour ne pas fixer de maximum).
 
 ⚠️ Le nombre de moyens de paiement Pledg maximum est de 6.
 
