@@ -75,7 +75,35 @@ Description des champs :
 
 ⚠️ Le nombre de moyens de paiement Pledg maximum est de 6.
 
-## Etape 5 - Test
+## Etape 5 - CSS (optionnel)
+
+Si la taille des icônes en face de vos modes de paiement Pledg est trop grande, rajoutez un morceau de code CSS selon la procédure suivante :
+
+1. Cliquez sur "Apparence" dans le menu de gauche, puis "Personnaliser":
+
+![VersCss.PNG](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/VersCss.png)
+
+2. Sur la page nouvellement apparue, un nouveau menu s'affiche à gauche, cliquez sur "CSS additionnel" :
+
+![CssAdditionnel.PNG](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/CssAdditionnel.png)
+
+3. 
+ - Copier / coller ce morceau de code [1] :
+	
+	ul.payment_methods li img {
+    vertical-align: middle;
+    margin: -2px 0 0 .5em;
+    padding: 0;
+    position: relative;
+    box-shadow: none;
+    max-width: 23Px;
+	}
+	
+ - Puis cliquez sur "Publier [2] :
+
+![CssSetting.PNG](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/CssSetting.png)
+
+## Etape 6 - Test
 
 Réalisez un test complet dans votre environnement :
 
