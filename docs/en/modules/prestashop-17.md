@@ -71,12 +71,12 @@ Description of the fields :
 - Activate payment: enable / disable this payment method.
 - Production mode: yes if you want to put this payment method into production, no if you want to keep it in test mode for now.
 - Marchant ID (required): your Marchant ID associated with the payment method (communicated by Pledg and starting with "mer_").
-- Description: the description of your payment.
 - Secret : Secret key for authentication (i.e. securing) the payments (communicated by Pledg).
 - Minimum : minimum amount in the customer's cart, that allows them to use this payment method.
 - Maximum : maximum amount till which the customer can use this payment (if you don't which to set a threshold, type 0).
 - Icon : lets you upload an icon that the customers will see in front of this payment method.
-
+- Description: the description of your payment.
+- Position : order of priority of the selected payment method.
 
 ## Step 5 - Test
 
