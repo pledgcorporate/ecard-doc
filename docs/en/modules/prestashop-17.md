@@ -56,21 +56,27 @@ The module will be automatically activated and will appear in the "MORE" section
 
 🔧 On your Prestashop Back Office, you can add the various Pledg payment methods.
 
-Go to details > Pledg - Payments.
+In the left menu, go to MORE > Pledg - Payments [1]. You get to the screen as shown on the below image, listing all the Pledg payment methods already set up.
+Click on "Add Payment" [2]
 
-🔖 Fill in the information :
+![AddPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.7/AddPayment.png)
 
-![Capture d’écran 2020-04-14 à 11.34.11.png](https://storage.googleapis.com/slite-api-files-production/files/558407ef-2e0e-4a6d-a7e0-b3a40d6c9745/Capture%2520d%25u2019e%25u0301cran%25202020-04-14%2520a%25u0300%252011.34.11.png)
+🔖 Fill in the information then click on Save :
+
+![FillNewPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.7/FillNewPayment.png)
 
 Description of the fields :
 
 - Title (required): the title of the means of payment; this title will appear to the user (example: "Pay in 3x").
-- Activate payment: yes if you want to activate this payment method.
-- Production mode: yes if you want to put this payment method into production.
-- Marchant ID (required): your Marchant ID associated with the payment method (communicated by Pledg).
+- Activate payment: enable / disable this payment method.
+- Production mode: yes if you want to put this payment method into production, no if you want to keep it in test mode for now.
+- Marchant ID (required): your Marchant ID associated with the payment method (communicated by Pledg and starting with "mer_").
 - Description: the description of your payment.
+- Secret : Secret key for authentication (i.e. securing) the payments (communicated by Pledg).
+- Minimum : minimum amount in the customer's cart, that allows them to use this payment method.
+- Maximum : maximum amount till which the customer can use this payment (if you don't which to set a threshold, type 0).
+- Icon : lets you upload an icon that the customers will see in front of this payment method.
 
-⚠️ Pledg payment methods will be displayed on your payment page in **the order in which you added them**.
 
 ## Step 5 - Test
 
