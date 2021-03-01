@@ -24,7 +24,7 @@ To log in :
 
 Once you have logged in, you will be taken to the main interface of the Pledg dashboard.
 
-![Capture_Présentation_Red.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_Presentation_Red.png)
+![GeneralView.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/en/GeneralView.png)
 
 Here you will find :
 
@@ -35,23 +35,26 @@ Here you will find :
 
 ## Create a new means of payment
 
-To create a new payment method, click on the "Create an account" button at the bottom of the list of payment methods.
+To create a new payment method, click on the "Add an account" button at the bottom of the list of payment methods.
 
-![Capture_NouveauCompte.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_NouveauCompte.png)
+![CreerCompte.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/en/CreerCompte.png)
 
 Fill in all the fields then click on the "Create" button:
 
 * Company name
 * Logo URL
+* Iframe CSS URL (if you wish to customize the for where customers enter their card details, can enter here the URL where the CSS is hosted, or Pledg can host it for you)
 * Type of payment
+* IBAN
+* BIC
 
 | Payment type in English | Payment type in French | Setup
 | ----------- | ----------- | ----------- |
-| Deferred | Deferred | |
+| Deferred | Deferred |  |
 | Split | Installation | Fill in the field "Number of maturities" (cannot exceed 12x) |
 | With down payment | Down payment | Fill in the fields "Percentage of down payment" and "Max number of days before capturing the balance" |
 
-* Signature required: tick the box if you want to sign the exchanges.
+* Signature required: tick the box if you want to sign the exchanges with a secret key (additional level of security).
 
 ⚠️ All fields are required (including logo).
 
@@ -63,7 +66,7 @@ Once created, the new Pledg account / payment method will appear in the list of 
 
 In the accounts, click on the account / Pledg payment method you want to view.
 
-![Capture_CompteConsulter_Red.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_CompteConsulter_Red.png)
+![ConsulterCompte.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/en/ConsulterCompte.png)
 
 On the right side of the screen are displayed :
 
@@ -73,19 +76,20 @@ On the right side of the screen are displayed :
 
 ### Key Account Features
 
-![Capture_ComptePrincipalesCaracteristiques.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_ComptePrincipalesCaracteristiques.png)
+![PrincipalesCaracteristiquesCompte.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/en/PrincipalesCaracteristiquesCompte.png)
 
 * UID: the technical identifier of your payment method also called MerID
 * Key: the private key of your means of payment; it allows you to authenticate and secure the exchange of information with a signature. ⚠️ the key is optional and its use is reserved for developers.
 * Type: the type of payment configured: "Split", "Deferred" ...
 * Employees: the number of employees with access to the account (in this example: one employee).
 * Change button: by clicking on the button you can change some of the account information.
+* Generate payment link button : See section [Payment links](https://docs.pledg.co/en/guide/payment-link.html)
 
 ### Changing the features of an account
 
 Click on the small "change pencil" icon located under the main account features staff.
 
-![Capture_CompteModification1.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_CompteModification1.png)
+![InfosCompte.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/en/InfosCompte.png)
 
 Modify the desired information and click on the "Modify" button.
 
@@ -93,11 +97,10 @@ The following fields can be modified:
 
 * "Brief description": text giving a brief description of your account (in this example "2x" for a payment split in two)
 * "Logo URL": select a file with your logo and upload it.
+* "CSS URL" : page where the iframe's CSS is hosted (Pledg can host it for you)
 * "Type of payment" (**not modifiable**): parameter indicating the type of payment (in this example "Split")
 * "Number of instalments" (**not modifiable**): the number of instalments of your means of payment in the case of a split payment (in this example "2 instalments"); for information purposes, on the right you will find the charges applied to the buyer (in this example 0.5%)
 * "Signature required": activate or deactivate the signature for this account
-
-![Capture_CompteModification2_Red.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_CompteModification2_Red.png)
 
 Below the editable account characteristics, you can add/delete and view the list of collaborators who have access to the account.
 

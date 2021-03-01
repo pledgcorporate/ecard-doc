@@ -24,7 +24,7 @@ Pour vous connecter :
 
 Après vous êtres identifiés, vous arrivez sur l'interface principale du dashboard Pledg.
 
-![Capture_Présentation_Red.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_Presentation_Red.png)
+![GeneralView.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/GeneralView.png)
 
 Vous y trouverez :
 
@@ -37,21 +37,24 @@ Vous y trouverez :
 
 Pour créer un nouveau moyen de paiement, cliquez sur le bouton "Créer un compte" en bas de la liste de moyens de paiement.
 
-![Capture_NouveauCompte.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_NouveauCompte.png)
+![CreerCompte.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/CreerCompte.png)
 
 Remplissez l'ensemble des champs puis cliquez sur le bouton "Créer" :
 
 * Nom de l'entreprise
-* URL du logo
+* URL du logo de l'entreprise
+* URL du CSS de l'iframe (uniquement si vous souhaitez personnaliser l'iframe dans lequel vos clients renseignent leurs informlations de paiement).
 * Type de paiement
+* IBAN
+* BIC
 
 | Type de paiement en français | Type de paiement en anglais | Paramétrage |
 | ----------- | ----------- | ----------- |
-| Différé | Deferred |  |
+| Différé | Deferred | Compléter le nombre de jours de différé |
 | Fractionné | Installment | Complétez le champ "Nombre d'échéances" (ne peut pas excéder 12x) |
 | Avec accompte/solde | Down payment | Complétez les champs "Pourcentage de l'acompte" et "Nombre max de jours avant capture du solde" |
 
-* Signature requise : cochez la case si vous voulez signer les échanges.
+* Signature requise : cochez la case si vous voulez signer les échanges avec une clé secrète (niveau de sécurité supplémentaire).
 
 ⚠️ Tous les champs sont requis (y compris le logo).
 
@@ -63,7 +66,7 @@ Une fois créé, le nouveau compte / moyen de paiement Pledg apparaît dans la l
 
 Dans les comptes, cliquez sur le compte / moyen de paiement Pledg que vous voulez consulter.
 
-![Capture_CompteConsulter_Red.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_CompteConsulter_Red.png)
+![ConsulterCompte.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/ConsulterCompte.png)
 
 Sur la partie droite de l'écran sont affichées :
 
@@ -73,19 +76,20 @@ Sur la partie droite de l'écran sont affichées :
 
 ### Principales caractéristiques du compte
 
-![Capture_ComptePrincipalesCaracteristiques.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_ComptePrincipalesCaracteristiques.png)
+![ComptePrincipalesCaracteristiques.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/PrincipalesCaracteristiquesCompte.png)
 
 * UID : l'identifiant technique de votre moyen de paiement aussi appelé MerID
 * Clé : la clé privé de votre moyen de paiement ; elle permet d'authentifier et sécuriser les échanges d'information par une signature. ⚠️ la clé est facultative et son utilisation réservée aux développeurs.
 * Type : le type de paiement configuré : "Fractionné", "Différé" ...
 * Collaborateurs: le nombre de collaborateurs ayant accès au compte (dans cet exemple : un collaborateur)
 * Bouton modification : en cliquant sur le bouton vous pouvez modifier certaines informations du compte
+* Bouton génération de lien de paiement : voir section [Liens de paiement](https://docs.pledg.co/guide/payment-link.html)
 
 ### Modification des caractéristiques d'un compte
 
 Cliquez sur la petite icone "crayon de modification" située sous les collaborateurs des caractéristiques principales du compte.
 
-![Capture_CompteModification1.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_CompteModification1.png)
+![InfosCompte.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/InfosCompte.png)
 
 Modifiez les informations souhaitées et cliquez sur le bouton "Modifier".
 
@@ -93,11 +97,12 @@ Les champs suivants sont modifiables :
 
 * "Brève description": texte donnant une brève description de votre compte (dans cet exemple "2x" pour un paiement fractionné en deux fois)
 * "URL du logo": sélectionnez un fichier avec votre logo et chargez le
+* "URL du CSS" : page sur laquelle est hébergé le CSS de l'iframe (Pledg peut l'héberger à votre demande)
 * "Type de paiement" (**non modifiable**) : paramètre indiquant le type de paiement (dans cet exemple "Fractionné")
 * "Nombre d'échéances" (**non modifiable**) : le nombre d'échéances de votre moyen de paiement dans le cas d'un paiement fractionné (dans cet exemple "2 échéances") ; à titre informatif, sur le droite vous trouverez les frais appliqués sur l'acheteur (dans cet exemple 0,5%)
+* "IBAN"
+* "BIC"
 * "Signature requise" : activez ou désactivez la signature pour ce compte
-
-![Capture_CompteModification2_Red.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/dashboard/fr/Capture_CompteModification2_Red.png)
 
 En dessous des caractéristiques modifiables du compte, vous pouvez ajouter/supprimer et consulter la liste des collaborateurs ayant accès au compte.
 
