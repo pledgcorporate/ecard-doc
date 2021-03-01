@@ -74,9 +74,9 @@ Once the installation is complete, a new item "Pledg - Payments" should appear i
 
 ![Capture_ConfigurationAddPaiment_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/bdd07499-d20b-4ab7-b7d4-0b8fbc2b557b/Capture_ConfigurationAddPaiment_Red.PNG)
 
-- complete the information :
+- fill the information :
 
-![Capture_ConfigurationAddPaimentFields_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/fd761524-04cc-421a-a68a-5c02dc4eb6e2/Capture_ConfigurationAddPaimentFields_Red.png)
+![FillNewPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.6/FillNewPayment.png)
     - Fill in the fields.
     - Click on the "Save" button; a notification will say "Creation successful".
     - Repeat the add operation for all your Pledg payment methods.
@@ -86,13 +86,15 @@ Description of the fields :
     - Title (required): the title of the payment method; this title will appear to the user (example: "Pay in 3x").
     - Activate payment: yes if you want to activate this payment method.
     - Production mode: yes if you want to put this payment method into production.
-    - Marchant ID (required): your Marchant ID associated with the payment method (communicated by Pledg).
+    - Merchant ID (required): your Marchant ID associated with the payment method (communicated by Pledg).
     - Secret (required): your secret key used to certify payments (communicated by Pledg).
-    - Description: the description of your payment.
+	- Minimum : minimum amount in the customer's cart, that allows them to use this payment method.
+	- Maximum : maximum amount till which the customer can use this payment (if you don't which to set a threshold, type 0).
+	- Icon : lets you upload an icon that the customers will see in front of this payment method.
+    - Description : the description of your payment.
+	- Position : order of priority to display your Pledg payment methods.
 
-⚠️ Pledg payment methods will be displayed on your payment page in **the order in which you added them**.
-
-## Step 5 - Test
+## Step 4 - Test
 
 Carry out a complete test in your environment :
 
