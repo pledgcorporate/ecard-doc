@@ -34,19 +34,16 @@ Before redoing the installation, a complete uninstallation of the module is nece
 
   https://github.com/pledgcorporate/ecard-woocommerce/archive/master.zip
 
-* Prepare the archive
-  - Unzip the downloaded archive.
-  - Rename the directory to "woocommerce_pledg" (please do not use capital letters).
-  - Recompress the archive.
+Take the archive as is, then :
 
 - Add the module in WordPress
   - Go to module manager via the menu "Plugins > Add new" and click on "Load module".
   - Click on "Upload Plugin".
-  - Select the archive "woocommerce_pledg" in zip format and click on the "Install Now" button.
+  - Select the archive you just retrieved in zip format and click on the "Install Now" button.
 
 ![Capture_Install_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/8081223d-fb75-48ee-8d4a-58b34ee9584a/Capture_Install_Red.PNG)
 
-    - Then click on the "Activate Plugin" button; a notification will say "Plugin activated".
+- Then click on the "Activate Plugin" button; a notification will say "Plugin activated".
 
 ![Capture_InstallActivate_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/b613da20-e592-44a2-9d35-81dd87048315/Capture_InstallActivate_Red.PNG)
 
@@ -60,19 +57,51 @@ To do so, go to Woocommerce > Setting > Payments where you will find a list of t
 
 For each of your account identifiers (`merchant_uid`), configure a Pledg method. The ones you have configured and activated will appear in the payment methods available to the customer.
 
-🔖 Click on the "Set Up" button and complete the information, then click one on the "Save changes" button; a notification will inform you that "Your settings have been saved:
+🔖 Click on the "Manage" button and complete the information, then click one on the "Save changes" button; a notification will inform you that "Your settings have been saved".
 
-![Capture d’écran 2020-05-18 à 16.27.04.png](https://storage.googleapis.com/slite-api-files-production/files/4668dda5-7a5f-4ea3-8bd5-fdc26710f20d/Capture%2520d%25u2019e%25u0301cran%25202020-05-18%2520a%25u0300%252016.27.04.png)
+![PaymentPledg.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/en/PaymentPledg.png)
 
 Description of the fields :
 
-- Title (required): the title of the means of payment; this title will appear to the user (example: "Pay in 3x").
 - Enable/Disable: yes if you want to activate this payment method.
 - Development/Production mode: yes if you want to put this payment method into production.
-- Merchant ID (required): your Merchant ID associated with the payment method (communicated by Pledg).
-- Description: the description of your payment.
+- Merchant ID [Required]: your Merchant ID associated with the payment method (communicated by Pledg).
+- Secret Key : Secret key for authenticating (i.e. securing) of the payments (communicated by Pledg). 
+- Title : Language for which you wish to set the means of payment title.
+- Title ([Language you've selected just above]): the title of the means of payment for the selected language; this title will appear to the user (example: "Pay in 3x"). [Required]
+- Description : Language for which you wish to set the the means of payment's description.
+- Description ([Language you've selected just above]) : the description of your payment method in the selected language.
+- Minimum amount : minimum amount from which the payment method will be offered the customer.
+- Maximum amount : maximum amount till which the payment method will be offered the customer (set "0" if you don't wish any threshold).
 
 ⚠️ The maximum number of Pledg payment methods is 6.
+
+## Step 5 - CSS (optional)
+
+If thesize of icons in front of your Pledg means of payments is too big, add a css block of code following this process :
+
+1. Click on "Appearance" in the left menu, then "Customise":
+
+![ToCss.PNG](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/en/ToCss.png)
+
+2. On the newly appeared page, a new menu is displayed on the left, click on "additional CSS" :
+
+![cssAdditionnel.PNG](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/en/cssAdditionnel.png)
+
+3. Copy / Paste this block of code [1] :
+	
+	ul.payment_methods li img {
+    vertical-align: middle;
+    margin: -2px 0 0 .5em;
+    padding: 0;
+    position: relative;
+    box-shadow: none;
+    max-width: 23Px;
+	}
+	
+Then click on "Publish" [2] :
+ 
+![cssSetting.PNG](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/en/cssSetting.png)
 
 ## Step 5 - Test
 

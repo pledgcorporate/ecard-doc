@@ -37,13 +37,13 @@ Avant de refaire l'installation, une désinstallation complète du module est n�
 Récupérez l'archive telle quelle, puis :
 
 - Ajoutez le module dans WordPress
-  - Allez dans gestionnaire des modules via le menu "Plugins > Add new" ("Extensions > Ajouter", si vous utilisez la version française) et cliquez sur "Charger un module".
-  - Cliquez sur "Upload Plugin" ("Téléverser une extension", en version française).
-  - Sélectionnez l'archive que vous venez de récupérer avec le lien ci-dessus (au format zip) et cliquez sur le bouton "Install Now" ("Installer Maintenant").
+  - Allez dans gestionnaire des modules via le menu "Extensions > Ajouter", et cliquez sur "Charger un module".
+  - Cliquez sur "Téléverser une extension".
+  - Sélectionnez l'archive que vous venez de récupérer avec le lien ci-dessus (au format zip) et cliquez sur le bouton "Installer Maintenant".
 
 ![Capture_Install_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/8081223d-fb75-48ee-8d4a-58b34ee9584a/Capture_Install_Red.PNG)
 
-    - Puis cliquez sur le bouton "Activate Plugin" ; une notification vous indiquera "Plugin activated."
+    - Puis cliquez sur le bouton "Activer" ; une notification vous indiquera "Module activé"
 
 ![Capture_InstallActivate_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/b613da20-e592-44a2-9d35-81dd87048315/Capture_InstallActivate_Red.PNG)
 
@@ -51,23 +51,24 @@ Récupérez l'archive telle quelle, puis :
 
 🔧 Sur votre Back Office Woocommerce, vous pouvez ajouter les différents moyens de paiements Pledg.
 
-Pour cela, allez dans Woocommerce > Setting > Payments où vous trouverez la liste des moyens de paiement Pledg que vous pouvez paramétrer.
+Pour cela, allez dans Woocommerce > Réglages > Paiements où vous trouverez la liste des moyens de paiement Pledg que vous pouvez paramétrer.
 
 ![Capture_ConfigurationList_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/afd77fdf-ef64-4a90-90b6-4a7da4e1b80c/Capture_ConfigurationList_Red.PNG)
 
 Pour chacun de vos identifiant de compte (`merchant_uid`), configurer une méthode Pledg. Ceux que vous avez configurés et activés apparaitront dans les moyens de paiement disponibles pour le client.
 
-🔖 Cliquez sur le bouton "Set Up" et complétez les informations, puis cliquez une sur le bouton "Save changes" ; une notification vous informera que "Your settings have been saved.":
+🔖 Cliquez sur le bouton "Gérer" et complétez les informations, puis cliquez une sur le bouton "Enregistrer les modifications" ; une notification vous informera que "Vos réglages ont été enregistrés":
 
 ![FillPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/FillPayment.png)
 
 Description des champs :
 
-- Titre : Langue pour laquelle vous souhaitez définir le titre ci-dessous.
-- Titre ([LangueSélectionnéeCiDessus]) : le titre du moyen de paiement pour la langue sélectionnée ; ce titre apparaîtra à l'utilisateur (exemple : "Payez en 3x"). [Obligatoire]
 - Activer/Désactiver : oui si vous voulez activer ce mode paiement.
 - Mode développement/Mode production : oui si vous voulez mettre ce mode de paiement en production.
-- Merchant ID (obligatoire) : votre identifiant Merchant ID associé au mode de paiement (communiqué par Pledg).
+- Merchant ID [Obligatoire] : votre identifiant Merchant ID associé au mode de paiement (communiqué par Pledg).
+- Secret Key : Clé secrète de sécurisation des données de paiement (communiquée par Pledg). 
+- Titre : Langue pour laquelle vous souhaitez définir le titre ci-dessous.
+- Titre ([LangueSélectionnéeCiDessus]) : le titre du moyen de paiement pour la langue sélectionnée ; ce titre apparaîtra à l'utilisateur (exemple : "Payez en 3x"). [Obligatoire]
 - Description : Langue pour laquelle vous souhaitez définir la description ci-dessous.
 - Description ([LangueSélectionnéeCiDessus]) : la description de votre paiement.
 - Montant minimum de commande : panier minimum à partir duquel le mode de paiement sera proposé au client.
@@ -87,8 +88,7 @@ Si la taille des icônes en face de vos modes de paiement Pledg est trop grande,
 
 ![CssAdditionnel.PNG](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/CssAdditionnel.png)
 
-3. 
- - Copier / coller ce morceau de code [1] :
+3. Copier / coller ce morceau de code [1] :
 	
 	ul.payment_methods li img {
     vertical-align: middle;
@@ -99,7 +99,7 @@ Si la taille des icônes en face de vos modes de paiement Pledg est trop grande,
     max-width: 23Px;
 	}
 	
- - Puis cliquez sur "Publier [2] :
+Puis cliquez sur "Publier" [2] :
 
 ![CssSetting.PNG](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/CssSetting.png)
 
