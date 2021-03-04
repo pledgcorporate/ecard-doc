@@ -38,9 +38,14 @@ Avant de refaire l'installation, une désinstallation complète du module est n�
 
 - Téléchargez le [module Prestashop de Pledg](https://github.com/pledgcorporate/ecard-prestashop1.7/archive/master.zip)
 
+- Préparez l'archive
+  - Décompressez l'archive téléchargée.
+  - Renommez le répertoire en "pledg" (**attention pas de majuscules**).
+  - Recompressez l'archive.
+
 - Ajoutez le module dans Prestashop
   - Allez dans gestionnaire des modules via le menu "Modules" et cliquez sur "Charger un module".
-  - Sélectionnez l'archive au format zip ; une notification vous indiquera que "Le module a bien été
+  - Sélectionnez l'archive "pledg" au format zip ; une notification vous indiquera que "Le module a bien été
     téléchargé".
 
 ![EN_Capture_AddModule_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/a2af32d8-f3b3-4aee-970c-5c63f2ccf8be/EN_Capture_AddModule_Red.PNG)
