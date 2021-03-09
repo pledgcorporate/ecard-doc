@@ -234,6 +234,7 @@ All available settings, required and optional, are detailed below.
 | `shippingAddress` | `{street: string, city: string, stateProvince: string, zipcode: string, country: string}` | Customer shipping address (the country must be an ISO 3166-1 alpha-2 code) | Optional |
 | `birthDate` |  `string` | Customer birth date (`YYYY-MM-DD`) | Optional |
 | `birthCity` | `string` | Customer birth city | Optional |
+| `birthZipcode` | `string` | Customer birth zip code | Optional |
 | `birthStateProvince` | `string`  | Customer birth region | Optional |
 | `birthCountry` | `string` | Customer birth country (ISO 3166-1 alpha-2 code) | Optional |
 
