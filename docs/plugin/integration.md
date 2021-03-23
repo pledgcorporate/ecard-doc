@@ -633,6 +633,7 @@ POST /merchant_payment_notification_url
  "card_number":"5132180289753097",
  "purchase":{"uid":"pur_9ae3e186-6f94-449d-bc3e-f2221621e1e5",
              "reference":"A/31D135BA/V"},
+ "merchant_uid":"mer_e821ccca-7a16-45a7-8b00-0a6015e16123",
  "amount":79.0,
  "amount_cents":7900}
 ```
@@ -799,7 +800,7 @@ This webhook is a *POST* which body contains the transaction id and status.
 
 Example:
 
-```
+```json
 POST /merchant_payment_notification_url
 
 {"created_at": "2019-04-04T12:20:34.97138Z",
@@ -810,6 +811,8 @@ POST /merchant_payment_notification_url
  "sandbox": "true",
  "error": "",
  "reference": "PLEDG_1086986786391",
+ "merchant_uid":"mer_e821ccca-7a16-45a7-8b00-0a6015e16123",
+ "purchase_uid":"pur_6c48d42b-f29b-4f84-bee8-3cb2b964b600",
  "signature": "B1C777835C01CA96AC4C3097FD46A7CA49B92BE157EDE0CB3552880D12A15359"}
 ```
 
@@ -944,6 +947,8 @@ The body of the notification will be as such:
    "reference":"purchase_reference",
    "created":"2020-09-17 15:00:02.052177",
    "transfer_order_item_uid":"tri_fasdkfiasfsd234nfs7f5d",
+   "merchant_uid":"mer_e821ccca-7a16-45a7-8b00-0a6015e16123",
+   "purchase_uid":"pur_6c48d42b-f29b-4f84-bee8-3cb2b964b600",
    "amount_cents":10000
 }
 ```
