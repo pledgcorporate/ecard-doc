@@ -811,8 +811,6 @@ POST /merchant_payment_notification_url
  "sandbox": "true",
  "error": "",
  "reference": "PLEDG_1086986786391",
- "merchant_uid":"mer_e821ccca-7a16-45a7-8b00-0a6015e16123",
- "purchase_uid":"pur_6c48d42b-f29b-4f84-bee8-3cb2b964b600",
  "signature": "B1C777835C01CA96AC4C3097FD46A7CA49B92BE157EDE0CB3552880D12A15359"}
 ```
 
