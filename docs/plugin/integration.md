@@ -1161,8 +1161,9 @@ The virtual cards do not support the 3DS.
 Therefore, if, in some situations, the merchant forces the 3DS verification, it will always fail.
 
 To avoid this, the merchant should deactivate the 3DS verification for the virtual cards provided by Pledg, which can be identified with their BIN:
-- 522719 (for Edenred)
 - 513218 (for Arkea)
+- 522719 (for Edenred corporate)
+- 591014 (for Edenred consumer)
 
 ## Amount and type of the initial charge
 
