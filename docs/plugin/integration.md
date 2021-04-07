@@ -235,7 +235,6 @@ All available settings, required and optional, are detailed below.
 | `birthDate` |  `string` | Customer birth date (`YYYY-MM-DD`) | Optional |
 | `birthCity` | `string` | Customer birth city | Optional |
 | `birthZipcode` | `string` | Customer birth zip code | Optional |
-| `birthStateProvince` | `string`  | Customer birth region | Optional |
 | `birthCountry` | `string` | Customer birth country (ISO 3166-1 alpha-2 code) | Optional |
 
 #### How to delay the second share expiration date for installment payments?
