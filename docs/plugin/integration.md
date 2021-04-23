@@ -508,7 +508,6 @@ The different values for `error.type` are the following:
 | `payment_refused` | The PSP of Pledg failed |
 | `bad_gateway` | The PSP of the merchant failed (back mode only) |
 | `3DS_confirmation_timeout` | The 3DS payment process could not be completed on time |
-| `direct_confirmation_timeout` | The direct (i.e. without 3DS) payment process could not be completed on time |
 | `not_eligible` | The customer is not eligible to this type of payment (an authorization may appear on the customer account but no money will be debited) |
 
 Important notes:
