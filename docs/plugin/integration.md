@@ -509,7 +509,7 @@ The different values for `error.type` are the following:
 | `bad_gateway` | The PSP of the merchant failed (back mode only) |
 | `3DS_confirmation_timeout` | The 3DS payment process could not be completed on time |
 | `direct_confirmation_timeout` | The direct (i.e. without 3DS) payment process could not be completed on time |
-| `not_eligible` | The customer is not eligible to this type of payment. An authorization hold may appear on the customer account |
+| `not_eligible` | The customer is not eligible to this type of payment (an authorization may appear on the customer account but no money will be debited) |
 
 Important notes:
 - If the error is an initialization error, it may be worth that the `onError` callback hides the Pledg component. Indeed, such an error implies that the Pledg component is not usable in this context. It is recommended that the `onError` callback does not redirect to an error page, since this error may occur even if the user does not click on the Pledg button.
