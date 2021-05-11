@@ -216,6 +216,7 @@ All available settings, required and optional, are detailed below.
 | `containerElement` | `element` | DOM element which must contain the iframe (if not set, the iframe is displayed as a popin). It is **strongly** recommended to use a container and not a popin. Indeed, iOS does not support very well the large iframe in popins. Technically, if the popin is larger than the viewport, the window scrolls down automatically. This is a problem when creating the shares, since the user cannot see what he is typing. If it is absolutely necessary to use a popin, the plugin can be hidden for iOS devices (see an exemple of code [there](https://staging.merchant.ecard.pledg.co/popin-demo.html)). | Not Used |
 | `lang` | `string` | Language to be used (*de_DE*, *en_GB*, *es_ES*, *fr_FR*, *it_IT* and *nl_NL* only - *fr_FR* by default) | Not Used |
 | `paymentNotificationUrl` | `string` | Merchant URL (*https://www.example.com*) or email address (*mailto:john.doe@gmail.com*) to call at the payment end | Not Used |
+| `errorNotificationUrl` | `string` | Merchant URL (*https://www.example.com*) to call when the purchase fails after the payment screen | Not Used |
 | [`metadata`](https://pledgcorporate.github.io/ecard-plugin-doc/#/plugin/README?id=metadata) | `Object` | Merchant-specific data (typically, a tour operator may set `{departure_date: "2019-02-01"}` in this field) | Not Used |
 | `countryCode` | `string` | Can be used to override merchant `Country code` from [Merchant parameters](#merchant-parameters) settings for a purchase | Not Used |
 | `redirectUrl` | `string` | URL where the customer must be redirected after the payment (required in direct call or in redirection payment without iframe) | Not Used |
@@ -937,8 +938,10 @@ The structure of the result passed to onSuccess is:
 
 ### Notification
 
+#### Payment
+
 To notify the merchant that the purchase was completed successfully, a notification will be sent using `paymentNotificationUrl` as a `POST`.
-The body of the notification will be as such:
+The body of the notification will be as follow:
 
 ```json
 {
@@ -1153,6 +1156,30 @@ POST /merchant_webhook_purchase_end
 ```
 
 This webhook is provided only for information, without any error managment or retry.
+
+## Error Notification
+
+The merchant can be notified of an error occuring after the payment screen by providing the `errorNotificationUrl` parameter: 
+- The notificaton is sent if the purchase_state becomes one of `PRIMARY_KO`, `SCORING_KO`, `VCP_KO`, `CONNECTOR_KO`. 
+- The notification is a POST request on `errorNotificationUrl`. 
+
+The body of the notification contains the following fields:
+
+```json
+{
+   "reference" : "purchase_reference",
+   "purchase_state" : "PRIMARY_KO",
+   "purchase_uid" : "pur_6c48d42b-f29b-4f84-bee8-3cb2b964b600",
+}
+```
+
+If there is a `secret` in your [Merchant parameters](#merchant-parameters), it will be used to sign the notification body with jwt. In this case, only the signature is sent.
+
+```
+{
+    "signature" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWZlcmVuY2UiOiJwdXJjaGFzZV9yZWZlcmVuY2UiLCJwdXJjaGFzZV9zdGF0ZSI6IlBSSU1BUllfS08iLCJwdXJjaGFzZV91aWQiOiJwdXJfNmM0OGQ0MmItZjI5Yi00Zjg0LWJlZTgtM2NiMmI5NjRiNjAwIn0.375q0I_1Z8ZExa6aFwOvHdFvx4HTfpE-lbcHYlQ2nGs"
+}
+```
 
 ## 3DS
 
