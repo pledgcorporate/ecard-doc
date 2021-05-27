@@ -107,8 +107,4 @@ Réalisez un test complet dans votre environnement :
 
 ![Capture_TestCHeckout.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/1c1b2417-7ff4-4321-8ff1-cdb4a9934d4a/Capture_TestCHeckout.PNG)
 
-## NB : Installation via Composer 🔦
 
-Pour l'installation via composer, voir le [Readme](https://github.com/pledgcorporate/ecard-magento)
-
-Si vous avez des questions francois.delaitre@pledg.co 👋
