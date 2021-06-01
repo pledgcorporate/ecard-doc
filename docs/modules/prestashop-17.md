@@ -16,9 +16,6 @@
 
 Avant de refaire l'installation, une désinstallation complète du module est nécessaire.
 
-- Sauvegarder votre paramétrage: avant de procéder à la désinstallation nous vous
-  conseillons de sauvegarder votre paramétrage : cliquez dans le menu sur "Pledg - Paiements" et copiez vos identifiants (`merchant_uid`) pour chaque mode de paiement.
-
 - Désinstaller le module
   - Allez dans le gestionnaire des modules en cliquant sur "Modules"
     dans le menu.
@@ -41,7 +38,7 @@ Avant de refaire l'installation, une désinstallation complète du module est n�
 - Préparez l'archive
   - Décompressez l'archive téléchargée.
   - Renommez le répertoire en "pledg" (**attention pas de majuscules**).
-  - Recompressez l'archive.
+  - Recompressez l'archive, vous devez obtenir une archive "pledg.zip" qui contient un dossier "pledg" qui contient les resources du module. 
 
 - Ajoutez le module dans Prestashop
   - Allez dans gestionnaire des modules via le menu "Modules" et cliquez sur "Charger un module".
@@ -54,14 +51,14 @@ Le module sera automatiquement activé et apparaitra dans la section "PLUS" du m
 
 ## Étape 4 - Configuration
 
-🔧 Sur votre Back Office Prestashop, vous pouvez ajouter les différents moyens de paiements Pledg.
+Sur votre Back Office Prestashop, vous pouvez ajouter les différents moyens de paiements Pledg.
 
  - Dans le menu de gauche, aller dans PLUS > Pledg - Paiements [1]. Vous obtenez l'écran tel qu'indiqué sur l'image ci-dessous, listant les modes de paiement déjà paramétrés.
  - Cliquer sur Ajouter paiement [2].
 
  ![AddPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.7/AddPayment.png)
 
-🔖 Compléter les informations puis cliquer sur enregistrer :
+Compléter les informations puis cliquer sur enregistrer :
 
 ![FillNewPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/Prestashop1.7/FillNewPayment.png)
 
@@ -88,4 +85,4 @@ Réalisez un test complet dans votre environnement :
 
 ![Capture_TestPaiement_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/1be289ee-6a00-4d4f-807d-a68ae5e2a4ef/Capture_TestPaiement_Red.PNG)
 
-Si vous avez des questions francois.delaitre@pledg.co 👋
+Si vous avez des questions thomas.flores@pledg.co 👋
