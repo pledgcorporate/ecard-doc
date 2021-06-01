@@ -16,14 +16,12 @@
 
 Avant de refaire l'installation, une désinstallation complète du module est nécessaire.
 
-- Sauvegarder votre paramétrage: avant de procéder à la désinstallation nous vous conseillons de sauvegarder votre paramétrage : cliquez dans le menu sur "Pledg - Paiements" et copiez vos identifiants (`merchant_uid`) pour chaque mode de paiement.
-
 - Désinstaller le module
   - Allez dans le gestionnaire des modules en cliquant sur "Modules et services" dans le menu.
   - Recherchez le module Pledg.
   - Cliquez sur le bouton vert "Desactiver".
   - Cliquez sur le sous-menu à côté du bouton "Activer" et cliquez sur "Supprimer".
-  - Confirmez la suppression ; une notification vous informera que le "Module(s) désinstallé(s) avec succès".
+  - Confirmez la suppression ; une notification vous informera que le "Module(s) désinstallé(s) avec succès" et vous ne devriez plus voir les paiements Pledg dans le menu de gauche.
 
 ![Capture_UnInstallModule_Red.png](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/9010e5b6-d143-4f3d-98e0-a32a7580f16b/Capture_UnInstallModule_Red.png)
 
@@ -40,7 +38,7 @@ Avant de refaire l'installation, une désinstallation complète du module est n�
 - Préparez l'archive
   - Décompressez l'archive téléchargée.
   - Renommez le répertoire en "pledg" (**attention pas de majuscules**).
-  - Recompressez l'archive.
+  - Recompressez l'archive (vous devez obtenir une archive "pledg.zip", qui contient un répertoire "pledg", qui contient les resources du module).
 
 - Ajoutez le module dans Prestashop
   - Allez dans "Modules et services" et cliquez sur "Ajouter un nouveau module".
@@ -54,7 +52,7 @@ Avant de refaire l'installation, une désinstallation complète du module est n�
 
 ![Capture_InstallNewModule_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/218d8a4e-4833-4939-b8c1-be48b055f499/Capture_InstallNewModule_Red.PNG)
 
-    - Cliquez sur le bouton "Continuer l'installation" ; une notification vous indiquera "Module(s) installé(s) avec succès".
+- Cliquez sur le bouton "Continuer l'installation" ; une notification vous indiquera "Module(s) installé(s) avec succès".
 
 ![Capture_InstallNewModule_Confirmation_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/069c0740-ed5b-48a6-a5ce-b9217b3492ac/Capture_InstallNewModule_Confirmation_Red.PNG)
 
