@@ -87,7 +87,7 @@ Si la taille des icônes en face de vos modes de paiement Pledg est trop grande,
 
 3. Copier / coller ce morceau de code [1] :
 	
-	ul.payment_methods li img {
+ul.payment_methods li img {
     vertical-align: middle;
     margin: -2px 0 0 .5em;
     padding: 0;
