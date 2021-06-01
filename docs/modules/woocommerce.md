@@ -16,10 +16,6 @@
 
 Avant de refaire l'installation, une désinstallation complète du module est nécessaire.
 
-* Sauvegarder votre paramétrage: avant de procéder à la désinstallation nous vous conseillons de sauvegarder votre paramétrage.
-  - Allez dans WooCommerce > Settings et cliquez sur l'onglet "Payments" et copiez vos identifiants (`merchant_uid`) pour chaque mode de paiement.
-
-* Désinstaller le module
   - Allez dans le gestionnaire des modules en cliquant sur Plugins > Installed Plugins dans le menu.
   - Recherchez le module Pledg.
   - Cliquez sur "Desactivate" en bleu.
@@ -38,18 +34,18 @@ Récupérez l'archive telle quelle, puis :
 
 - Ajoutez le module dans WordPress
   - Allez dans gestionnaire des modules via le menu "Extensions > Ajouter", et cliquez sur "Charger un module".
-  - Cliquez sur "Téléverser une extension".
-  - Sélectionnez l'archive que vous venez de récupérer avec le lien ci-dessus (au format zip) et cliquez sur le bouton "Installer Maintenant".
+  - Cliquez sur "Télécharger une extension".
+  - Sélectionnez l'archive que vous venez de récupérer avec le lien ci-dessus (au format zip) puis cliquez sur le bouton "Installer Maintenant".
 
 ![Capture_Install_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/8081223d-fb75-48ee-8d4a-58b34ee9584a/Capture_Install_Red.PNG)
 
-    - Puis cliquez sur le bouton "Activer" ; une notification vous indiquera "Module activé"
-
+- Puis cliquez sur le bouton "Activer" ; une notification vous indiquera "Module activé"
+    
 ![Capture_InstallActivate_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/b613da20-e592-44a2-9d35-81dd87048315/Capture_InstallActivate_Red.PNG)
 
 ## Étape 4 - Configuration
 
-🔧 Sur votre Back Office Woocommerce, vous pouvez ajouter les différents moyens de paiements Pledg.
+Sur votre Back Office Woocommerce, vous pouvez ajouter les différents moyens de paiements Pledg.
 
 Pour cela, allez dans Woocommerce > Réglages > Paiements où vous trouverez la liste des moyens de paiement Pledg que vous pouvez paramétrer.
 
@@ -57,7 +53,7 @@ Pour cela, allez dans Woocommerce > Réglages > Paiements où vous trouverez la 
 
 Pour chacun de vos identifiant de compte (`merchant_uid`), configurer une méthode Pledg. Ceux que vous avez configurés et activés apparaitront dans les moyens de paiement disponibles pour le client.
 
-🔖 Cliquez sur le bouton "Gérer" et complétez les informations, puis cliquez une sur le bouton "Enregistrer les modifications" ; une notification vous informera que "Vos réglages ont été enregistrés":
+Cliquez sur le bouton "Gérer" et complétez les informations, puis cliquez une sur le bouton "Enregistrer les modifications" ; une notification vous informera que "Vos réglages ont été enregistrés":
 
 ![FillPayment.png](https://pledg-assets.s3-eu-west-1.amazonaws.com/ecard-plugin-doc/module/WooCommerce/FillPayment.png)
 
@@ -73,6 +69,7 @@ Description des champs :
 - Description ([LangueSélectionnéeCiDessus]) : la description de votre paiement.
 - Montant minimum de commande : panier minimum à partir duquel le mode de paiement sera proposé au client.
 - Montant maximum de commande : panier maximum au-delà duquel le mode de paiement ne sera proposé plus au client (indiquer "0" pour ne pas fixer de maximum).
+- Logo : il s'agit d'un logo qui apparaitra sur la page de sélection du moyen de paiement, à côté du moyen en question.
 
 ⚠️ Le nombre de moyens de paiement Pledg maximum est de 6.
 
@@ -113,4 +110,4 @@ Réalisez un test complet dans votre environnement :
 
 ![Capture_Test_Red.PNG](https://storage.googleapis.com/slite-api-files-production/files/IRZjGiN~EW/bb81c96a-ad11-4675-9faa-43b69431bb3c/Capture_Test_Red.PNG)
 
-Si vous avez des questions francois.delaitre@pledg.co 👋
+Si vous avez des questions thomas.flores@pledg.co 👋
