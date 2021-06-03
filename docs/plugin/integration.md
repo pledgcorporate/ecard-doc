@@ -786,9 +786,6 @@ For more information, see [there](https://payzen.io/en-EN/webservices-payment/im
 
 For SOAP webservice the result can be provided as a JWT, encoded with a secret shared between Pledg and the merchant.
 
-For REST webservice, if the purchase was configured with a `payment_notification_url` Payzen will send an IPN to this url.
-For more information on Payzen's IPN, see [there](https://payzen.io/en-EN/rest/V4.0/api/kb/ipn_usage.html)
-
 ### Standard notification
 
 The merchant can specify at the purchase creation a webhook to be called at the end of the PSP payment (i.e. when the PSP returns to Pledg the payment result).
@@ -869,21 +866,17 @@ B1C777835C01CA96AC4C3097FD46A7CA49B92BE157EDE0CB3552880D12A15359
 
 ### Payzen notification
 
-Let us consider a merchant using Payzen and where the customer completes the payment with the Payzen front library.
-
-In this situation, Payzen normally notifies the result of the payment to the merchant.
-
-If now the merchant integrates Pledg in back mode, Payzen does not notify the merchant because the payment is completed server-to-server.
-
-The Pledg platform can then send the same notification as the one Payzen should have have sent, so that the integration is seamless for the merchant.
-
 The merchant must specify at the purchase creation the webhook URL to be called at the end of the payment.
 
 This webhook URL is an optional parameter of the purchase: `paymentNotificationUrl`.
 
+If the merchant uses the REST webservice of Payzen via Pledg, Payzen sends an IPN to `paymentNotificationUrl`. For more information on Payzen's IPN, see [there](https://payzen.io/en-EN/rest/V4.0/api/kb/ipn_usage.html).
+
+If the merchant uses the SOAP webservice of Payzen via Pledg, Payzen does not send any IPN, because the payment is completed server-to-server. The Pledg platform then sends the same notification as the one Payzen should have have sent, so that the integration is seamless for the merchant.
+
 ### Ogone notification
 
-The principle is exactly the same as for Payzen, for the same reasons.
+The principle is exactly the same as for SOAP webservice of Payzen, for the same reasons.
 
 ### Demo
 
