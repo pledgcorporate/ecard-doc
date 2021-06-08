@@ -207,6 +207,8 @@ All available settings, required and optional, are detailed below.
 
 The settings below can be required or optional, depending on the configuration of the merchant defined contractually.
 
+| Name | Type | Details | Scoring |
+|--|--|--|--|
 | [`metadata`](https://pledgcorporate.github.io/ecard-plugin-doc/#/plugin/README?id=metadata) | `Object` | Merchant-specific data (typically, a tour operator may set `{departure_date: "2019-02-01"}` in this field) | Not Used |
 | `phoneNumber` | `string` | Customer phone number (E164) | Mandatory |
 | `address` | `{street: string, city: string, stateProvince: string, zipcode: string, country: string}` | Customer billing address (the country must be an ISO 3166-1 alpha-2 code - `country` must be equal to `FR` for installment and deferred payments) | Mandatory |
