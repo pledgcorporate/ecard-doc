@@ -203,6 +203,17 @@ All available settings, required and optional, are detailed below.
 | `title` | `string` |  Title of the purchase |
 | `onSuccess` | `function` | Function which handles the result (eCard in front mode and transaction in the other modes) passed as argument (not required in the redirection payment without iframe) |
 
+### Contractual settings
+
+The settings below can be required or optional, depending on the configuration of the merchant defined contractually.
+
+| [`metadata`](https://pledgcorporate.github.io/ecard-plugin-doc/#/plugin/README?id=metadata) | `Object` | Merchant-specific data (typically, a tour operator may set `{departure_date: "2019-02-01"}` in this field) | Not Used |
+| `phoneNumber` | `string` | Customer phone number (E164) | Mandatory |
+| `address` | `{street: string, city: string, stateProvince: string, zipcode: string, country: string}` | Customer billing address (the country must be an ISO 3166-1 alpha-2 code - `country` must be equal to `FR` for installment and deferred payments) | Mandatory |
+| `birthDate` |  `string` | Customer birth date (`YYYY-MM-DD`) | Optional |
+| `birthCity` | `string` | Customer birth city | Optional |
+| `birthCountry` | `string` | Customer birth country (ISO 3166-1 alpha-2 code) | Optional |
+
 ### Optional settings
 
 | Name | Type | Details | Scoring |
@@ -217,7 +228,6 @@ All available settings, required and optional, are detailed below.
 | `lang` | `string` | Language to be used (*de_DE*, *en_GB*, *es_ES*, *fr_FR*, *it_IT* and *nl_NL* only - *fr_FR* by default) | Not Used |
 | `paymentNotificationUrl` | `string` | Merchant URL (*https://www.example.com*) or email address (*mailto:john.doe@gmail.com*) to call at the payment end | Not Used |
 | `errorNotificationUrl` | `string` | Merchant URL (*https://www.example.com*) to call when the purchase fails after the payment screen | Not Used |
-| [`metadata`](https://pledgcorporate.github.io/ecard-plugin-doc/#/plugin/README?id=metadata) | `Object` | Merchant-specific data (typically, a tour operator may set `{departure_date: "2019-02-01"}` in this field) | Not Used |
 | `countryCode` | `string` | Can be used to override merchant `Country code` from [Merchant parameters](#merchant-parameters) settings for a purchase | Not Used |
 | `redirectUrl` | `string` | URL where the customer must be redirected after the payment (required in direct call or in redirection payment without iframe) | Not Used |
 | `cancelUrl` | `string` | URL where the customer must be redirected when he cancels the payment or when the payment fails (required in direct call or in redirection payment without iframe) | Not Used |
@@ -230,14 +240,9 @@ All available settings, required and optional, are detailed below.
 | `validateCheckout` | `function` | Function to call to validate payment form when validation button is handled by merchant (`externalCheckoutValidation` set to *true*). | Not Used |
 | `onCheckoutFormStatusChange` | `boolean` | Function with parameter `boolean` `readiness` to inform the merchant when validation button shall be greyed out (`externalCheckoutValidation` set to *true*). | Not Used |
 | `civility` | `string` | Customer civility (`Mr` or `Ms`) | Mandatory |
-| `phoneNumber` | `string` | Customer phone number (E164) | Mandatory |
-| `address` | `{street: string, city: string, stateProvince: string, zipcode: string, country: string}` | Customer billing address (the country must be an ISO 3166-1 alpha-2 code - `country` must be equal to `FR` for installment and deferred payments) | Mandatory |
 | `shippingAddress` | `{street: string, city: string, stateProvince: string, zipcode: string, country: string}` | Customer shipping address (the country must be an ISO 3166-1 alpha-2 code) | Optional |
-| `birthDate` |  `string` | Customer birth date (`YYYY-MM-DD`) | Optional |
-| `birthCity` | `string` | Customer birth city | Optional |
 | `birthZipcode` | `string` | Customer birth zip code | Optional |
 | `birthStateProvince` | `string`  | Customer birth region | Optional |
-| `birthCountry` | `string` | Customer birth country (ISO 3166-1 alpha-2 code) | Optional |
 
 #### How to delay the second share expiration date for installment payments?
 
@@ -1152,9 +1157,9 @@ This webhook is provided only for information, without any error managment or re
 
 ## Error Notification
 
-The merchant can be notified of an error occuring after the payment screen by providing the `errorNotificationUrl` parameter: 
-- The notificaton is sent if the purchase_state becomes one of `PRIMARY_KO`, `SCORING_KO`, `VCP_KO`, `CONNECTOR_KO`. 
-- The notification is a POST request on `errorNotificationUrl`. 
+The merchant can be notified of an error occuring after the payment screen by providing the `errorNotificationUrl` parameter:
+- The notificaton is sent if the purchase_state becomes one of `PRIMARY_KO`, `SCORING_KO`, `VCP_KO`, `CONNECTOR_KO`.
+- The notification is a POST request on `errorNotificationUrl`.
 
 The body of the notification contains the following fields:
 
@@ -1195,4 +1200,3 @@ The amount of the initial charge made on the customer account as well as its typ
 | Installment      | Capture           | Amount of the first installment |
 | Deferred         | Preauthorization  | Percentage of the total amount of the purchase |
 | Down payment     | Capture           | Amount of the deposit           |
-
