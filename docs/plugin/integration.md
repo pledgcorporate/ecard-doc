@@ -825,7 +825,7 @@ POST /merchant_payment_notification_url
 
 The transaction statuses are documented [there](https://docs.processout.com/payments/handle-status-changes-webhooks/#transaction-statuses).
 
-#### Signature of the result
+#### Signature
 
 This webhook has a `signature` field to check that it was sent from Pledg
 
@@ -877,7 +877,9 @@ The merchant must specify at the purchase creation the webhook URL to be called 
 
 This webhook URL is an optional parameter of the purchase: `paymentNotificationUrl`.
 
-If the merchant uses the REST webservice of Payzen via Pledg, Payzen sends an IPN to `paymentNotificationUrl`. For more information on Payzen's IPN, see [there](https://payzen.io/en-EN/rest/V4.0/api/kb/ipn_usage.html).
+If the merchant uses the REST webservice of Payzen via Pledg, there are two possibilities:
+- Payzen sends an IPN to `paymentNotificationUrl`. For more information on Payzen's IPN, see [there](https://payzen.io/en-EN/rest/V4.0/api/kb/ipn_usage.html).
+- Pledg sends a notification, using the [standard format](https://docs.pledg.co/plugin/integration.html#standard-notification)
 
 If the merchant uses the SOAP webservice of Payzen via Pledg, Payzen does not send any IPN, because the payment is completed server-to-server. The Pledg platform then sends the same notification as the one Payzen should have have sent, so that the integration is seamless for the merchant.
 
