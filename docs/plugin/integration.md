@@ -791,7 +791,7 @@ In the result above, `status` contains the `transactionStatusLabel` value, i.e. 
 
 For more information, see [there](https://payzen.io/en-EN/webservices-payment/implementation-webservices-v5/49commonresponse.html).
 
-For SOAP webservice the result can be provided as a JWT, encoded with a secret shared between Pledg and the merchant.
+The result can be provided as a JWT, encoded with a secret shared between Pledg and the merchant.
 
 ### Standard notification
 
