@@ -771,7 +771,11 @@ The structure of the result passed to onSuccess is:
                  "id": "payzen_transaction_id",    # ex 9xxxx7
                  "uid": "payzen_transaction_uid",  # ex a717ae49e2844cb19ef19a702dc1xxxx
                  "status": "payzen_status_label",  # always AUTHORISED
-                 "reference": "foo-bar-baz"}}
+                 "reference": "foo-bar-baz"},
+ "purchase": {"meta_data": {"departure-date": "2022-03-30"},
+              "reference": "PLEDG_6500735432411",
+              "uid": "pur_c9299823-810e-4e8b-a7c3-bde856e6840c"}
+}
 ```
 
 The Payzen web service `createPayment` called by the back returns in `paymentResponse` the transaction id and uid:
