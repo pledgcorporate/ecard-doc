@@ -211,7 +211,7 @@ The settings below can be required or optional, depending on the configuration o
 |--|--|--|--|
 | [`metadata`](https://pledgcorporate.github.io/ecard-plugin-doc/#/plugin/README?id=metadata) | `Object` | Merchant-specific data (typically, a tour operator may set `{departure_date: "2019-02-01"}` in this field) | Not Used |
 | `phoneNumber` | `string` | Customer phone number (E164) | Mandatory |
-| `address` | `{street: string, city: string, stateProvince: string, zipcode: string, country: string}` | Customer billing address (the country must be an ISO 3166-1 alpha-2 code - `country` must be equal to `FR` for installment and deferred payments) | Mandatory |
+| `address` | `{street: string, city: string, stateProvince: string, zipcode: string, country: string}` | Customer billing address<br>The country must be an ISO 3166-1 alpha-2 code<br>`country` must be equal to `FR` for installment and deferred payments<br>If the street is split on several lines (e.g. "line1" and "line2"), it is recommended to join them in a single string with a comma (i.e. "line1, line2") | Mandatory |
 | `birthDate` |  `string` | Customer birth date (`YYYY-MM-DD`) | Optional |
 | `birthCity` | `string` | Customer birth city | Optional |
 | `birthCountry` | `string` | Customer birth country (ISO 3166-1 alpha-2 code) | Optional |
@@ -242,7 +242,7 @@ The settings below can be required or optional, depending on the configuration o
 | `validateCheckout` | `function` | Function to call to validate payment form when validation button is handled by merchant (`externalCheckoutValidation` set to *true*). | Not Used |
 | `onCheckoutFormStatusChange` | `boolean` | Function with parameter `boolean` `readiness` to inform the merchant when validation button shall be greyed out (`externalCheckoutValidation` set to *true*). | Not Used |
 | `civility` | `string` | Customer civility (`Mr` or `Ms`) | Mandatory |
-| `shippingAddress` | `{street: string, city: string, stateProvince: string, zipcode: string, country: string}` | Customer shipping address (the country must be an ISO 3166-1 alpha-2 code) | Optional |
+| `shippingAddress` | `{street: string, city: string, stateProvince: string, zipcode: string, country: string}` | Customer shipping address<br>The country must be an ISO 3166-1 alpha-2 code<br>`country` must be equal to `FR` for installment and deferred payments<br>If the street is split on several lines (e.g. "line1" and "line2"), it is recommended to join them in a single string with a comma (i.e. "line1, line2") | Optional |
 | `birthZipcode` | `string` | Customer birth zip code | Optional |
 | `birthStateProvince` | `string`  | Customer birth region | Optional |
 
