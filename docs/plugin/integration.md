@@ -1197,6 +1197,8 @@ To avoid this, the merchant should deactivate the 3DS verification for the virtu
 - 513218 (for Arkea)
 - 522719 (for Edenred corporate)
 - 591014 (for Edenred consumer)
+- 48719434 (for Manager One corporate)
+- 48719334 (for Manager One consumer)
 
 ## Amount and type of the initial charge
 
